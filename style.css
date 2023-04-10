@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Shantell+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Shantell+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 'Inter', sans-serif;
+	text-decoration: none;
+	color: black;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+.padding-50px{
+	padding-left: 100px;
+	padding-right: 100px;
+}
+header{
+	height: 28px;
+	background-color: #f5fbef;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+header a{
+	padding: 6px 17px 0px 17px;
+	height: 100%;
+	flex: 1;
+	text-align: center;
+}
+header a:hover{
+	background-color: #2B2D42;
+	color: #f5fbef; 
+}
+nav{
+	background-color: #2B2D42;
+	height: 47px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+#nav-1 h1{
+	color: #f5fbef;
+	padding-left: 17px; 
+}
+#nav-2{
+	display: flex;
+	gap: 0px;
+	width: 100%;
+	justify-content: right;
+	align-items: center;
+	margin-right: 20px;
+	height: 100%;
+}
+#nav-2 a{
+	color: white;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0px 10px;
+}
+#nav-2 a:hover{
+	background-color: #0E79B2;
+}
+#nav-3{
+	display: flex;
+	align-items: center;
+	background-color: #f5fbef; 
+	padding: 3px 5px; 
+}
+#nav-3 input{
+	border: none;
+	outline: none;
+	background-color: #f5fbef; 
+}
+
+#headernavline{
+	height: 4px;
+	background-color: #0E79B2;
+}
+
+
+
+
+
+
+main {
+	background-color: aliceblue;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: calc(100vh - 79px);
+	background-color: lightblue;
+	position: relative;
+}
+main h3 {
+	font-size: 77px;
+	font-weight: 700;
+	color: #2B2D42;
+	color: black;
+	text-shadow: 2px 5px white;
+}
+	main h5 {
+		font-size: 31px;
+		font-weight: 400;
+		color: #2B2D42;
+		color: white;
+	}
+main button{
+	float: left;
+	width: 200px;
+	padding: 20px;
+	background-color: #2B2D42;
+	font-size: 21px;
+	color: white;
+	border: none;
+	border-radius: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+main button span{
+	color: white;
+}
+main button:hover{
+	text-shadow: #FC0 1px 0 10px;
+}
+main video{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	opacity: 1;
+}
+
+
+
+
+
+
+
+#we-do{
+	height: 320px;
+	background-color: #f5fbef;
+	display: flex;
+	gap: 25px;
+	align-items: center;
+	justify-content: center;
+}
+.we-do-items{
+	height: 70%;
+	/* border: 1px solid black; */
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	align-items: center;
+	padding: 20px;
+}
+.we-do-items span{
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #2B2D42;
+	color: white; 
+}
+#we-do-span{
+	font-family: 'Roboto Condensed', sans-serif;
+	text-align: center;
+	padding: 45px 0px 0px 0px;
+	font-size: 35px;
+	font-weight: 600;
+	background-color: #f5fbef;
+}
+.we-do-items p{
+	text-align: center;
+}
+
+
+
+
+/*login css codes are written here*/
+
+#login-section{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: 'Roboto Condensed', sans-serif;
+	height: 450px;
+	background-color: #f5fbef;
+}
+#login-section input{
+	font-size: 14px;
+	padding: 4px 5px;
+}
+#login-container{
+	flex: 1;
+	height: 100%;
+	padding: 30px 50px 30px 50px;
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	justify-content: center;
+}
+#login-section-heading{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 600;
+	font-size: 34px;
+	margin-bottom: 25px;
+}
+#firstname-lastname{
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: space-between;
+}
+.flex-items{
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+
+#gender-inputs{
+	margin: 16px 0px;
+}
+.flex-items-only{
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+.flex-gender{
+	display: flex;
+	align-items: center;
+}
+.use-pass{
+	flex: 1;
+}
+#gender-inputs label{
+	font-size: 15px;
+}
+.flex-items label{
+	font-size: 15px;
+}
+#login-container button{
+	width: 140px;
+	padding: 6px 0px;
+	border: none;
+	outline: none;
+	font-size: 18px;
+	margin-top: 27px;
+	background-color: #2B2D42;
+	color: #f5fbef;
+	border-radius: 10px;
+}
+
+
+
+
+
+
+
+#video-login{
+	position: relative;
+	flex: 2;
+	/* border: 2px solid black; */
+	height: 100%;
+}
+#video-login video{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* big section content */
+#big-content-section{
+	font-family: 'Roboto Condensed', sans-serif;
+	background-color: #f5fbef;
+	height: 80vh;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-template-rows: 100%;
+}
+.big-content-section-items{
+	height: 100%;
+	width: 100%;
+}
+#scrolling-section-1{
+	display: block;
+	overflow-x: auto;
+}
+.scrolling-section-1-items{
+	width: 100%;
+	height: 55px;
+	background-color: #0E79B2;
+	border-bottom: 1px solid black;
+}
+
+
+/*section content*/
+#section-content{
+	display: flex;
+	height: 600px;
+	margin: 30px;
+}
+#section-content-1{
+	height: 100%;
+	flex: 3;
+	/*border: 1px solid black;*/
+}
+
+#section-content-2 {
+	flex: 1.2;
+	height: 100%;
+	border-left: 1px solid rgb(43, 42, 42);
+	padding-left: 20px;
+}
+.section-2-ad-box{
+	display: flex;
+	gap: 4px;
+	/*border: 1px solid black;*/
+	margin-top: 20px;
+	align-items: center;
+}
+.section-2-ad-box img{
+	width: 122px;
+}
+.section-2-ad-c-head{
+	font-size: 15px;
+}
+.section-2-ad-c-company-name{
+	font-size: 13px;
+}
