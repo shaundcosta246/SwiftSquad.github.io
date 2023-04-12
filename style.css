@@ -298,17 +298,6 @@ main video{
 	flex-direction: column;
 	flex: 1;
 }
-@media(max-width: 800px){
-	#login-section{
-		height: 100%;
-	}
-	#video-login{
-		display: none;
-	}
-}
-
-
-
 
 #gender-inputs{
 	margin: 16px 0px;
@@ -343,12 +332,6 @@ main video{
 	border-radius: 10px;
 }
 
-
-
-
-
-
-
 #video-login{
 	position: relative;
 	flex: 2;
@@ -364,6 +347,20 @@ main video{
 	object-fit: cover;
 }
 
+@media(max-width: 800px){
+	#login-section{
+		height: 100%;
+	}
+	#video-login{
+		display: none;
+	}
+	.firstname-lastname{
+		flex-direction: column;
+	}
+	.firstname-lastname input{
+		width: 80%;
+	}
+}
 
 
 
