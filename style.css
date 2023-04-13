@@ -66,6 +66,7 @@ nav{
 #nav-1 h1{
 	color: #f5fbef;
 	padding-left: 17px; 
+	font-family: 'Chivo Mono', monospace;
 }
 #nav-2{
 	display: flex;
@@ -159,7 +160,6 @@ main {
 	justify-content: center;
 	height: calc(100vh - 79px);
 	position: relative;
-	font-family: 'Inter', sans-serif;
 }
 #main-content{
 	margin: -170px 125px 0px 0px;
@@ -256,11 +256,15 @@ main {
 /*login css codes are written here*/
 
 #login-section{
+	background-image: url("https://wallpapercave.com/wp/wp2939946.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	font-family: 'Roboto Condensed', sans-serif;
-	height: 450px;
+	height: 412px;
 	background-color: #f5fbef;
 }
 #login-section input{
@@ -270,7 +274,7 @@ main {
 #login-container{
 	flex: 1;
 	height: 100%;
-	padding: 30px 50px 30px 50px;
+	padding: 0px 50px 30px 50px;
 	display: flex;
 	flex-direction: column;
 	/* align-items: center; */
@@ -281,6 +285,7 @@ main {
 	font-weight: 600;
 	font-size: 34px;
 	margin-bottom: 25px;
+	color: #f5fbef;
 }
 .firstname-lastname{
 	display: flex;
@@ -290,6 +295,7 @@ main {
 }
 .flex-items{
 	display: flex;
+	gap: 3px;
 	flex-direction: column;
 	flex: 1;
 }
@@ -311,26 +317,20 @@ main {
 }
 #gender-inputs label{
 	font-size: 15px;
+	color: white;
 }
 .flex-items label{
 	font-size: 15px;
-	transform: translateY(20px);
-}
-.label-fire-line{
-	transform: translateY(0px);
+	color: white;
 }
 
 .input-select-fun{
-	outline: none;
-	/* transition: 1s; */
 	height: 14px;
 	width: 200px;
-	border: none;
+	border: 1px solid black;
+	border-radius: 4px;
 }
-.input-fire-line{
-	outline: none;
-	border-bottom: 2px solid black;
-}
+
 
 #login-container button{
 	width: 140px;

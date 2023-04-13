@@ -13,17 +13,6 @@ menuNav.addEventListener("click", () => {
     }
 })
 
-Array.from(document.getElementsByClassName("label-fire-line")).forEach((element) => {
-    element.addEventListener("click", (e) => {
-        e.target.style.transform = "translateY(0px)";
-    })
-})
-Array.from(document.getElementsByClassName("input-select-fun")).forEach((element) => {
-    element.addEventListener("click", (e) => {
-        e.target.classList.remove("input-select-fun");
-        e.target.classList.add("input-fire-line");
-    })
-})
 
 const textInsidemain = document.getElementById("main-text-effect");
 const phrases = ['Hello my name is shaun dcosta', 'I am a web developer', 'How can i help u'];
