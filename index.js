@@ -12,3 +12,49 @@ menuNav.addEventListener("click", () => {
         count--;
     }
 })
+
+Array.from(document.getElementsByClassName("label-fire-line")).forEach((element) => {
+    element.addEventListener("click", (e) => {
+        e.target.style.transform = "translateY(0px)";
+    })
+})
+Array.from(document.getElementsByClassName("input-select-fun")).forEach((element) => {
+    element.addEventListener("click", (e) => {
+        e.target.classList.remove("input-select-fun");
+        e.target.classList.add("input-fire-line");
+    })
+})
+
+const textInsidemain = document.getElementById("main-text-effect");
+const phrases = ['Hello my name is shaun dcosta', 'I am a web developer', 'How can i help u'];
+let i = 0
+let j = 0
+let currentPhrase = []
+let isDeleting = false
+
+function loop(){
+    textInsidemain.innerText = currentPhrase.join("")
+    if(i < phrases.length){
+        if(!isDeleting && j <=  phrases[i].length){
+            currentPhrase.push(phrases[i][j])
+            j++
+        }
+        if(isDeleting && j <= phrases[i].length){
+            currentPhrase.pop(phrases[i][j])
+            j--
+        }
+        if(j == phrases[i].length){
+            isDeleting = true;
+        }
+        if(isDeleting && j === 0){
+            currentPhrase = []
+            isDeleting = false
+            i++
+            if(i == phrases.length){
+                i = 0;
+            }
+        }
+    }
+    setTimeout(loop, 50)
+}
+loop()
