@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Shantell+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Shantell+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 *{
 	padding: 0;
@@ -151,35 +152,41 @@ nav{
 
 
 main {
-	background-image: url("mainimage.jpg");
+	/* background-image: url("main image.jpeg"); */
 	background-attachment: fixed;
 	background-size: cover;
+	background-position: center;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	height: calc(100vh - 79px);
 	position: relative;
+	background-color: #f5fbef;
+}
+main img{
+	height: 93%;
 }
 #main-content{
-	margin: -170px 125px 0px 0px;
+	margin: 0px 125px 0px 0px;
+	width: 700px;
 }
 #main-content h2{
-	color: white;
-	font-size: 37px;
-	font-family: 'Chivo Mono', monospace;
+	color:#2B2D42;
+	font-size: 58px;
+	/* font-family: 'Chivo Mono', monospace; */
+	font-family: 'Montserrat', sans-serif;
 }
 #main-text-effect{
 	font-family: 'Chivo Mono', monospace;
 	font-size: 26px;
-	color: white;
+	color:#2B2D42;
 }
 #flex-main{
 	display: flex;
 	align-items: center;
 }
 #flex-main span{
-	background-color: white;
+	background-color: #2B2D42;
 	height: 30px;
 	width: 5px;
 	animation-name: blink;
@@ -196,6 +203,55 @@ main {
 		opacity: 0;
 	}
 }
+#main-box-roomid-username{
+	display: flex;
+	align-items: center;
+	width: 300px;
+	gap: 20px;
+	margin-top: 20px;
+}
+.main-box-items{
+	display: flex;
+	align-items: center;
+	background-color: #2B2D42;
+	height: 30px;
+	padding: 20px 10px 20px 10px;
+	border-radius: 14px;
+}
+.main-box-items input{
+	outline: none;
+	flex: 3;
+	height: 90%;
+	border: none;
+	color: white;
+	background-color: #2B2D42;
+	font-size: 21px;
+	font-family: 'Chivo Mono', monospace;
+}
+.main-box-items img{
+	flex: 1;
+	height: 100%;
+}
+#main-many-boxes{
+	height: 200px;
+	overflow-x: hidden;
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 30px;
+}
+#move-images{
+	display: flex;
+	height: 100%;
+	width: 100%;
+}
+#move-images img{
+	height: 100%;
+	min-width: 233.33px;
+}
+#main-images img:hover{
+	transform: scale(1);
+}
+
 
 
 
@@ -246,6 +302,10 @@ main {
 	.we-do-items{
 		width: 65vw;
 	}
+	#main-box-roomid-username{
+		flex-direction: column;
+		margin-left: 20px;
+	}
 }
 
 
@@ -256,29 +316,34 @@ main {
 /*login css codes are written here*/
 
 #login-section{
-	background-image: url("login\ image.jpg");
-	background-size: cover;
+	/* background-image: url("login\ image.jpg"); */
+	background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/05/Laptop-black-high-quality-resolution-wallpaper-768x432.jpg");
 	background-attachment: fixed;
 	background-position: center;
+	background-size: cover;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	font-family: 'Roboto Condensed', sans-serif;
-	height: 412px;
+	height: 480px;
 	background-color: #f5fbef;
 }
 #login-section input{
-	font-size: 14px;
-	padding: 4px 5px;
+	font-size: 17px;
+	padding: 8px 9px;
+	border-radius: 0px;
+	border: none;
+	outline: none;
 }
 #login-container{
-	flex: 1;
-	height: 100%;
-	padding: 0px 50px 30px 50px;
+	height: 70%;
+	padding: 45px 30px;
 	display: flex;
 	flex-direction: column;
 	/* align-items: center; */
 	justify-content: center;
+	background-color: rgba(61, 61, 61, 0.529);
+	border-radius: 10px;
 }
 #login-section-heading{
 	font-family: 'Roboto Condensed', sans-serif;
@@ -317,11 +382,11 @@ main {
 }
 #gender-inputs label{
 	font-size: 15px;
-	color: white;
+	color: #f5fbef;
 }
 .flex-items label{
 	font-size: 15px;
-	color: white;
+	color: #f5fbef;
 }
 
 .input-select-fun{
