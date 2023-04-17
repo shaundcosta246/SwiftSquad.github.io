@@ -316,8 +316,8 @@ main img{
 /*login css codes are written here*/
 
 #login-section{
-	/* background-image: url("login\ image.jpg"); */
-	background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/05/Laptop-black-high-quality-resolution-wallpaper-768x432.jpg");
+	background-image: url("login\ image.jpg");
+	/* background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/05/Laptop-black-high-quality-resolution-wallpaper-768x432.jpg"); */
 	background-attachment: fixed;
 	background-position: center;
 	background-size: cover;
