@@ -47,22 +47,3 @@ function loop(){
     setTimeout(loop, 80)
 }
 loop()
-
-let distanceMoved = -233.33;
-const movingImages = document.getElementById("move-images");
-const movingImagesDivWidth = getComputedStyle(movingImages).width;
-console.log(movingImagesDivWidth);
-let moveImg = () => {
-    movingImages.style.transition = "3s";
-    movingImages.style.transform = `translateX(${distanceMoved}px)`;
-    distanceMoved = -233.33 + distanceMoved; 
-    if(distanceMoved === -1866.6399999999999){
-        movingImages.style.transition = "0s";
-        movingImages.style.transform = `translateX(0px)`;
-        distanceMoved = -233.33;
-        movingImages.style.transition = "1s";
-    }
-}
-setInterval(() => {
-    moveImg()
-}, 9000);
