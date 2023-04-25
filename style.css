@@ -140,6 +140,7 @@ nav{
 	align-items: center;
 	gap: 20px;
 	padding: 50px 0px;
+	transition: 0.6s;
 }
 #medai800bar a{
 	font-size: 20px;
@@ -475,9 +476,27 @@ footer{
 		flex-direction: column;
 		gap: 0px;
 		height: 85vh;
-		padding-bottom: 50px;
+		padding: 0px;
+		align-items: center;
+		width: 100vw;
+		overflow: hidden;
+	}
+	#main-content{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 	#mainImage{
 		width: 79%;
+	}
+	#main-content h2{
+		font-size: 27px;
+	}
+	#main-box-roomid-username{
+		display: flex;
+		flex-direction: column;
+	}
+	.custom-shape-divider-bottom-1681918353 svg{
+		height: 96px;
 	}
 }
