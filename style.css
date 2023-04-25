@@ -8,10 +8,13 @@
 :root{
 	--main-color: #000ea5;
 }
+.blue{
+	color: #000ea5;
+}
 *{
 	padding: 0;
 	margin: 0;
-	font-family: 'Inter', sans-serif;
+	font-family: 'ZCOOL XiaoWei', sans-serif;
 	text-decoration: none;
 	color: black;
 }
@@ -45,20 +48,6 @@ header a:hover{
 	color: #f5fbef; 
 }
 
-@media(max-width: 1100px){
-	header{
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		padding: 20px 20px;
-	}
-	header a{
-		height: 0;
-		padding: 5px 10px;
-	}
-}
-
 
 
 nav{
@@ -78,7 +67,7 @@ nav{
 	font-family: 'Chivo Mono', monospace;
 	font-family: 'ZCOOL XiaoWei', sans-serif;
 	font-weight: 600;
-	color:#f5fbef;
+	color: #f5fbef;
 }
 #nav-2{
 	display: flex;
@@ -90,7 +79,6 @@ nav{
 	height: 100%;
 }
 #nav-2 a{
-	color: white;
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -98,9 +86,11 @@ nav{
 	padding: 0px 10px;
 	font-family: 'ZCOOL XiaoWei', sans-serif;
 	opacity: 85%;
+	color: #f5fbef;
 }
 #nav-2 a:hover{
-	background-color: #0E79B2;
+	opacity: 100%;
+	background-color: #ff7979;
 }
 #nav-3{
 	display: flex;
@@ -136,28 +126,40 @@ nav{
 #side-nav-bar a{
 	color: white;
 }
-@media(max-width: 950px){
-	nav{
-		padding: 0px 20px;
-	}
-	#menu-nav{
-		display: flex;
-	}
-	#nav-2{
-		display: none;
-	}
-	#nav-3{
-		display: none;
-	}
+
+#medai800bar{
+	position: absolute;
+	top: 51px;
+	right: 0px;
+	bottom: auto;
+	left: 0px;
+	background-color: #000ea5;
+	opacity: 55%;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	padding: 50px 0px;
 }
-
-
-
+#medai800bar a{
+	font-size: 20px;
+	color: #f5fbef;
+}
+#nav-menu{
+	position: absolute;
+	right: 20px;
+	color: white;
+	display: none;
+}
 
 
 #headernavline{
 	height: 4px;
-	background-color: #0E79B2;
+	background-color: #ff7979;
+	position: absolute;
+	bottom: -4px;
+	right: 0;
+	width: 100%;
 }
 
 
@@ -173,10 +175,10 @@ main {
 	justify-content: center;
 	height: calc(100vh - 79px);
 	position: relative;
-	/* background-color: #f5fbef; */
 	padding: 0px 0px 50px 0px;
+	isolation: isolate;
 }
-main img{
+#mainImage{
 	width: 40%;
 }
 #main-content{
@@ -294,6 +296,7 @@ main img{
 	/* gap: 12px; */
 	align-items: center;
 	padding: 20px;
+	/* border-radius: 4px; */
 }
 /* .we-do-items:hover{
 	background-color: #f5fbef10;
@@ -335,38 +338,146 @@ main img{
 	margin: 0px 0px 0px 0px;
 	line-height: 23px;
 }
+
+
+
+
+#web-info-parent{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 100px 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer{
+	background-color: var(--main-color);
+	padding: 40px 100px;
+	display: flex;
+	gap: 30px;
+}
+#footer-login{
+	height: 100%;
+	flex: 3;
+	display: flex;
+	justify-content: space-between;
+	padding: 0px 100px;
+}
+#footer-login div{
+	display: flex;
+	flex-direction: column;
+}
+.footer-child{
+	font-size: 16px;
+	color: white;
+	opacity: 70%;
+	margin-top: 12px;
+}
+.footer-child:hover{
+	opacity: 100%;
+	cursor: pointer;
+}
+.footer-heading{
+	color: white;
+	font-size: 20px;
+	font-weight: 800;
+}
+#footer-part{
+	height: 100%;
+	flex: 1;
+}
+#footer-part span{
+	font-size: 24px;
+	color: white;
+	font-weight: 700;
+}
+#footer-part form{
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+}
+#footer-part form input{
+	border: none;
+	outline: none;
+	margin: 10px 0px;
+	font-size: 16px;
+	padding: 8px 10px;
+	border-radius: 3px;
+}
+#footer-part form button{
+	border: none;
+	outline: none;
+	width: 40%;
+	padding: 9px 0px;
+	margin: 7px 0px;
+	font-weight: 700;
+	border-radius: 3px;
+	transition: 0.5s;
+	background-color: #ff7979;
+	color: white;
+}
+
+#footer-part form button:hover{
+	cursor: pointer;
+	transform: scale(1.05);
+}
+
 @media(max-width: 800px){
-	#we-do{
-		flex-direction: column;
+	header{
 		height: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		padding: 6px 6px;
 	}
-	.we-do-items{
-		width: 65vw;
+	nav{
+		display: flex;
+		justify-content: space-between;
+		padding: 6px 10px;
 	}
-	#main-box-roomid-username{
+	header a{
+		padding: 5px 10px;
+		font-size: 10px;
+	}
+	#nav-2{
+		display: none;
+	}
+	#nav-1 h1{
+		font-size: 91%;
+	}
+	#nav-3{
+		width: 30%;
+		display: flex;
+		align-items: center;
+	}
+	#nav-3 input{
+		width: 100%;
+	}
+	#nav-3 span{
+		padding: 2px;
+	}
+	#nav-menu{
+		display: contents;
+	}
+	main{
+		display: flex;
 		flex-direction: column;
-		margin-left: 20px;
+		gap: 0px;
+		height: 85vh;
+		padding-bottom: 50px;
+	}
+	#mainImage{
+		width: 79%;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* current building */
-.fashion-content{
-	background-color: #f5fbef;
-	padding: 30px 40px;
-}
-

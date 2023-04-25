@@ -1,18 +1,16 @@
-const menuNav = document.getElementById("menu-nav");
-const sideNavBar = document.getElementById("side-nav-bar");
-let count = 1;
-menuNav.addEventListener("click", () => {
-    if(count === 1){
-        sideNavBar.style.display ="flex";
-        sideNavBar.style.transform="translateX(0px)";
-        count++;
+const medianavbar = document.getElementById('medai800bar');
+const spanmenu = document.getElementById('nav-menu');
+let slide = 1;
+
+spanmenu.addEventListener('click', () => {
+    if(slide === 1){
+        medianavbar.style.display = "flex";
+        slide++;
     }else{
-        sideNavBar.style.transform="translateX(1000px)";
-        sideNavBar.style.display ="none";
-        count--;
+        medianavbar.style.display = "none";
+        slide--;
     }
 })
-
 
 const textInsidemain = document.getElementById("main-text-effect");
 const phrases = ['Hi, Here we go!', 'Connect with your friends throught us....', 'Its very easy.... good luck'];
@@ -47,3 +45,6 @@ function loop(){
     setTimeout(loop, 80)
 }
 loop()
+
+const Prob = document.getElementsByClassName("prob-2");
+const nav = document.getElementById("nav");
