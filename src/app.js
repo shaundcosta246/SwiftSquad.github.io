@@ -25,7 +25,9 @@ app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 app.use(express.json())
 
-
+app.get("/", (req, res) => {
+    res.render("index")
+})
 app.get("/login", (req, res) => {
     res.render("loginIn")
 })
