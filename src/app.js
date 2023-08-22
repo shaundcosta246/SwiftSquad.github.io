@@ -25,9 +25,7 @@ app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 app.use(express.json())
 
-app.get("/", (req, res) => {
-    res.render("index")
-})
+
 app.get("/login", (req, res) => {
     res.render("loginIn")
 })
@@ -49,7 +47,7 @@ app.post("/login", async(req, res) => {
     try{
         const email = req.body.email;
         const password = req.body.password;
-        console.log(email, password);
+        // console.log(email, password);
         const userFind = await Guests.findOne({email:email});
         if(userFind.password === password){
             res.status(201).render("mediaHome")
