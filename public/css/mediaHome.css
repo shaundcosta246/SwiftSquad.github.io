@@ -155,10 +155,11 @@ main{
     font-size: 15px;
     font-weight: 500;
     border-radius: 20px;
+}
+.blackBTN{
     color: var(--Primary-font-color);
     background-color: var(--Black-Font-Color);
 }
-
 
 #alloptions-con{
     width: var(--WebisteWidth);

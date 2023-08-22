@@ -170,3 +170,10 @@ nav{
     align-items: center;
     justify-content: center;
 }
+
+#formL{
+    margin: 0px auto;
+    font-size: 15px;
+    font-family: var(--AppleFontFamily);
+    font-weight: 400;
+}

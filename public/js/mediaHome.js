@@ -97,7 +97,19 @@ const InstagramButton = document.getElementById("btn-instagram");
 const FacebookButton = document.getElementById("btn-facebook");
 const YoutubeButton = document.getElementById("btn-youtube");
 const TelegramButton = document.getElementById("btn-telegram");
+const ThreadsButton = document.getElementById("btn-threads")
 
+const ButtonParent = Array.from(document.getElementsByClassName("main-down-buttons-con-ch")); //Parent Button
+const removeBlackBtn = () => {
+    ButtonParent.forEach((each) => {
+        each.classList.remove("blackBTN");
+    })
+}
+
+
+const MakeTheButtonDark = (elem) => {
+    elem.classList.add("blackBTN")
+}
 
 const createSonsByClicking = (backgroundImage, title) => {
     const createdSon = document.createElement("div");
@@ -115,6 +127,8 @@ const makeAlloptionsParentEmpty = () => {
 }
 
 InstagramButton.addEventListener("click", () => {
+    removeBlackBtn();
+    MakeTheButtonDark(InstagramButton);
     makeAlloptionsParentEmpty();
     if(alloptionsParent.innerHTML === ""){
         Instagram.forEach((eachData) => {
@@ -125,6 +139,8 @@ InstagramButton.addEventListener("click", () => {
     }
 });
 FacebookButton.addEventListener("click", () => {
+    removeBlackBtn();
+    MakeTheButtonDark(FacebookButton);
     makeAlloptionsParentEmpty();
     if(alloptionsParent.innerHTML === ""){
         FaceBook.forEach((eachData) => {
@@ -135,6 +151,8 @@ FacebookButton.addEventListener("click", () => {
     }
 });
 YoutubeButton.addEventListener("click", () => {
+    removeBlackBtn();
+    MakeTheButtonDark(YoutubeButton);
     makeAlloptionsParentEmpty();
     if(alloptionsParent.innerHTML === ""){
         Youtube.forEach((eachData) => {
@@ -145,6 +163,8 @@ YoutubeButton.addEventListener("click", () => {
     }
 });
 TelegramButton.addEventListener("click", () => {
+    removeBlackBtn();
+    MakeTheButtonDark(TelegramButton)
     makeAlloptionsParentEmpty();
     if(alloptionsParent.innerHTML === ""){
         Telegram.forEach((eachData) => {
@@ -154,7 +174,9 @@ TelegramButton.addEventListener("click", () => {
         alert("sorry cannot add element facebook");
     }
 });
-Threads.addEventListener("click", () => {
+ThreadsButton.addEventListener("click", () => {
+    removeBlackBtn();
+    MakeTheButtonDark(ThreadsButton)
     makeAlloptionsParentEmpty();
     if(alloptionsParent.innerHTML === ""){
         Threads.forEach((eachData) => {
