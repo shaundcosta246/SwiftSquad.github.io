@@ -1,68 +1,50 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 8000;
+const port = 8000 || process.env.PORT;
+const socketio = require("socket.io");
+const http = require("http");
+const server = http.createServer(app);
+const mongoose = require("mongoose");
 const path = require("path");
-const hbs = require("hbs");
-require("dotenv").config()
+const io = socketio(server);
 
-
-
-//database
+// database
 require("./db/conn");
-const Guests = require("./models/guest");
-app.use(express.urlencoded({extended:false}))
 
 
-//templates path
+// Path 
 const publicPath = path.join(__dirname, "../public");
-const viewsPath = path.join(__dirname, "../templates/views");
-const partialsPath = path.join(__dirname, "../templates/partials");
+const viewsPath = path.join(__dirname, "../template/views");
+const partialsPath = path.join(__dirname, "../template/partials");
 
 
-app.use(express.static(publicPath));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
-hbs.registerPartials(partialsPath);
-app.use(express.json())
+app.use(express.static(publicPath));
+
+
+//socket io
+io.on("connection", (socket) => {
+    console.log("User conected")
+    socket.on("disconnect", () => {})
+})
+
+
+
+
+
 
 app.get("/", (req, res) => {
-    res.render("index")
+    res.render("food")
 })
-app.get("/login", (req, res) => {
-    res.render("loginIn")
-})
-app.post("/mediaHome", async(req, res) => {
-    try{
-        const RegisteredGuest = new Guests({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            email: req.body.email,
-            password: req.body.password
-        })
-        const savedGuestData = await RegisteredGuest.save();
-        res.render("mediaHome");
-    }catch(error){
-        res.send(error)
-    }
-})
-app.post("/login", async(req, res) => {
-    try{
-        const email = req.body.email;
-        const password = req.body.password;
-        // console.log(email, password);
-        const userFind = await Guests.findOne({email:email});
-        if(userFind.password === password){
-            res.status(201).render("mediaHome")
-        }else{
-            res.send("password does not match")
-        }
-    }catch(error){
-        res.send("sorry please try again")
-    }
+app.get("/food", (req, res) => {
+    res.render("food")
 })
 
 
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Listining to the port no ${port}`);
 })

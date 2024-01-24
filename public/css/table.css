@@ -1,0 +1,146 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --mainFamily: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+header{
+    height: 8vh;
+    background-color: rgba(29, 29, 29, 0.768);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.headerChild{
+    height: 100%;
+    padding: 0px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mainFamily);
+    color: white;
+}
+.headerChild:hover{
+    cursor: pointer;
+    background-color: rgba(179, 179, 179, 0.7);
+}
+
+main{
+    height: 92vh;
+    display: grid;
+    gap: 7px;
+    border: 1px solid rgb(16, 16, 16);
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+    background-color: rgba(127, 255, 212, 0.296);
+}
+
+.main-child{
+    background-color: rgba(29, 29, 29, 0.768);
+    height: 100%;
+    width: 100%;
+    /* border: 1px solid rgba(0, 0, 0, 0.47); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mainFamily);
+    color: white;
+    border-radius: 17px;
+}
+.main-child:hover{
+    cursor: pointer;
+}
+
+
+#m-1{
+    grid-column-start: 2;
+    grid-row-end: 8;
+}
+#m-2{
+    grid-column-start: 2;
+    grid-row-end: 7;
+}
+#m-3{
+    grid-column-start: 2;
+    grid-row-end: 6;
+}
+#m-4{
+    grid-column-start: 2;
+    grid-row-end: 5;
+}
+
+#m-7{
+    grid-column-start: 4;
+    grid-row-end: 7;
+}
+#m-8{
+    grid-column-start: 4;
+    grid-row-end: 6;
+}
+#m-9{
+    grid-column-start: 4;
+    grid-row-end: 5;
+}
+
+#m-10{
+    grid-column-start: 5;
+    grid-row-end: 5;
+    margin-left: 7px;
+}
+#m-11{
+    grid-column-start: 5;
+    grid-row-end: 6;
+    margin-left: 7px;
+}
+#m-12{
+    grid-column-start: 5;
+    grid-row-end: 7;
+    margin-left: 7px;
+}
+
+
+#m-23{
+    grid-column-start: 7;
+    grid-row-end: 6;
+}
+#m-22{
+    grid-column-start: 7;
+    grid-row-end: 5;
+}
+#m-21{
+    grid-column-start: 7;
+    grid-row-end: 4;
+}
+#m-20{
+    grid-column-start: 7;
+    grid-row-end: 3;
+}
+
+
+#m-5{
+    grid-column-start: 4;
+    grid-row-end: 3;
+}
+#m-6{
+    grid-column-start: 5;
+    grid-row-end: 3;
+    margin-left: 7px;
+}
+
+
+#m-14{
+    grid-column-start: 4;
+    grid-row-end: 10;
+}
+#m-15{
+    grid-column-start: 5;
+    grid-row-end: 10;
+}
+#m-16{
+    grid-column-start: 6;
+    grid-row-end: 10;
+}

@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --MainFamily : 'Hind Siliguri', sans-serif;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+}
+#main-1{
+    flex: 3;
+    height: 100%;
+}
+header{
+    height: 10%;
+    background-color: white;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    overflow: hidden;
+    box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.545);
+}
+header button{
+    font-family: var(--MainFamily);
+    height: 80%;
+    padding: 0px 30px;
+    background-color: rgba(0, 0, 0, 0.693);
+    color: white;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+}
+header button:hover{
+    cursor: pointer;
+}
+#main-item-con{
+    height: 90%;
+    /* border: 1px solid rgba(0, 0, 0, 0.611); */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow-y: auto;
+    padding: 20px 0px;
+}
+#main-item-con::-webkit-scrollbar{
+    width: 4px;
+    background-color: rgba(202, 202, 202, 0);
+}
+#main-item-con::-webkit-scrollbar-thumb {
+    width: 4px;
+    background-color: #2b2b2b00;
+    /* border-radius: 4px; */
+}
+.main-items{
+    height: 40%;
+    width: 30%;
+    border: 1px solid rgba(0, 0, 0, 0.385);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+.shadeimg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 75%;
+    width: 100%;
+    background-color: rgb(0 0 0 / 22%);
+}
+.main-items img{
+    height: 75%;
+    width: 100%;
+}
+.main-item-con-p{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 8px;
+}
+.main-item-con-p span{
+    font-family: var(--MainFamily);
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.814);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#main-2{
+    flex: 1;
+    height: 100%;
+    box-shadow: -1px 0px 3px rgba(0, 0, 0, 0.545);
+    overflow: hidden;
+}
+#main-2-fromtotal{
+    height: 93%;
+    overflow-y: auto;
+}
+#main-2-fromtotal::-webkit-scrollbar{
+    width: 4px;
+    background-color: rgba(202, 202, 202, 0);
+}
+#main-2-fromtotal::-webkit-scrollbar-thumb {
+    width: 4px;
+    background-color: #2b2b2b00;
+    /* border-radius: 4px; */
+}
+.tableInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 35px;
+    background-color: rgba(0, 0, 0, 0.693);
+}
+
+#TableNo{
+    font-family: var(--MainFamily);
+    color: white;
+    font-weight: 500;
+}
+#time-s-e{
+    font-family: var(--MainFamily);
+    color: white;
+    font-weight: 500;
+}
+.foodtimeparts{
+    padding: 7px 35px;
+    background-color: red;
+    font-family: var(--MainFamily);
+    color: white;
+    font-weight: 500;
+}
+
+/* foodcontainer */
+.foodl-price{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 55px;
+    border-bottom: 1px solid #2b2b2b64;
+    font-family: var(--MainFamily);
+}
+.foodl-price:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.068);
+}
+.foodnamelist{
+    opacity: 97%;
+}
+.foodprice{
+    opacity: 80%;
+}
+
+#totalprice{
+    /* border: 1px solid green; */
+    height: 7%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 34px;
+    box-shadow: 0px -1px 3px #2b2b2bb1;
+}
+#totalprice input{
+    font-family: var(--MainFamily);
+    padding: 3px;
+    outline: none;
+}
+#totalprice button{
+    font-family: var(--MainFamily);
+    padding: 9px 15px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 50px;
+}
+#totalprice button:hover{
+    cursor: pointer;
+    background-color: #000000cf;
+}
