@@ -9,7 +9,7 @@ const path = require("path");
 const io = socketio(server);
 
 // database
-require("./db/conn");
+// require("./db/conn");
 
 
 // Path 
@@ -26,10 +26,10 @@ app.use(express.static(publicPath));
 
 
 //socket io
-io.on("connection", (socket) => {
-    console.log("User conected")
-    socket.on("disconnect", () => {})
-})
+// io.on("connection", (socket) => {
+//     console.log("User conected")
+//     socket.on("disconnect", () => {})
+// })
 
 
 
