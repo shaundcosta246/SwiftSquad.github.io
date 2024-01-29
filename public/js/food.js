@@ -1,3 +1,10 @@
+const socket = io();
+
+
+const refreshPage = () => {
+    location.reload();
+}
+
 // all navigation buttons
 const navigationBtns = document.getElementsByClassName("nav-btn");
 const ShortEatsbtn = document.getElementById("shortEats");
@@ -171,7 +178,7 @@ const SIDES = [
         foodprice: "3.5"
     },
     {
-        img: "https://www.mariaushakova.com/wp-content/uploads/2017/07/Detox-Kale-and-Beet-Salad-1.jpg",
+        img: "https://www.mariaushakova.com/wp-content/uploads/2017/07/Detox-Kale-and-Beet-Salad-250.jpg",
         foodname: "Beet + Cabbage + Kale Mallung(VG)",
         foodprice: "4"
     },
@@ -181,7 +188,7 @@ const SIDES = [
         foodprice: "3"
     },
     {
-        img: "https://th.bing.com/th/id/R.1b653db01f91e27703deae214425da83?rik=aAlBIthdL5XlpQ&riu=http%3a%2f%2fwww.whimsicalchef.com%2fwp-content%2fuploads%2f2015%2f01%2fCreamy-Dhal-Curry.jpg&ehk=84zUYvSOPHJwVEOJ4lxwtA8hSE2FVnosm1xcOchQh8I%3d&risl=&pid=ImgRaw&r=0",
+        img: "https://www.indianveggiedelight.com/wp-content/uploads/2020/08/butternut-squash-dal-featured-720x720.jpg",
         foodname: "Dhal Kari(VG)",
         foodprice: "5"
     },
@@ -231,10 +238,14 @@ const DESSERT = [
     }
 ];
 
+let tableNumber = document.getElementById("tableNo-i");
+
 let OrderToBeSent = {
     SHORTEATS: [],
     MAINS: [],
-    GRILLS: []
+    GRILLS: [],
+    tableNo: tableNumber.innerText,
+    totalPrice: 0
 };
 
 
@@ -250,7 +261,7 @@ ShortEatsbtn.addEventListener("click", () => {
         <img src="${e.img}" alt="">
         <div class="main-item-con-p">
             <span>${e.foodname}</span>
-            <span>£${e.foodprice}</span>
+            <span>${e.foodprice}</span>
         </div>
         `;
         foodParContainer.appendChild(createdElement);
@@ -274,7 +285,7 @@ hopperDosabtn.addEventListener("click", () => {
         <img src="${e.img}" alt="">
         <div class="main-item-con-p">
             <span>${e.foodname}</span>
-            <span>£${e.foodprice}</span>
+            <span>${e.foodprice}</span>
         </div>
         `;
         foodParContainer.appendChild(createdElement);
@@ -298,7 +309,7 @@ karisbtn.addEventListener("click", () => {
         <img src="${e.img}" alt="">
         <div class="main-item-con-p">
             <span>${e.foodname}</span>
-            <span>£${e.foodprice}</span>
+            <span>${e.foodprice}</span>
         </div>
         `;
         foodParContainer.appendChild(createdElement);
@@ -322,7 +333,7 @@ grillsbtn.addEventListener("click", () => {
         <img src="${e.img}" alt="">
         <div class="main-item-con-p">
             <span>${e.foodname}</span>
-            <span>£${e.foodprice}</span>
+            <span>${e.foodprice}</span>
         </div>
         `;
         foodParContainer.appendChild(createdElement);
@@ -346,7 +357,7 @@ sidesbtn.addEventListener("click", () => {
         <img src="${e.img}" alt="">
         <div class="main-item-con-p">
             <span>${e.foodname}</span>
-            <span>£${e.foodprice}</span>
+            <span>${e.foodprice}</span>
         </div>
         `;
         foodParContainer.appendChild(createdElement);
@@ -380,12 +391,13 @@ dessertsbtn.addEventListener("click", () => {
 
 
 let dfwaiterFood = document.getElementById("main-2-fromtotal");
+const totalFoodPrice = document.getElementById("totalPrice");
 setInterval(() => {
     dfwaiterFood.innerHTML = ``;
     const tableInfo = document.createElement("div");
     tableInfo.classList.add("tableInfo");
     tableInfo.innerHTML = `
-        <span id="TableNo">7</span>
+        <span id="TableNo">${tableNumber.innerText}</span>
         <span id="time-s-e">13.20 - 14.40</span>
     `;
     dfwaiterFood.appendChild(tableInfo);
@@ -394,41 +406,88 @@ setInterval(() => {
     foodheading.classList.add("foodtimeparts");
     foodheading.innerText = "SHORT EATS";
     dfwaiterFood.appendChild(foodheading);
+    let totalShortsP = 0;
     OrderToBeSent.SHORTEATS.forEach((eac) => {
         const createdElement = document.createElement("div");
         createdElement.classList.add("foodl-price");
+        totalShortsP += parseFloat(eac.foodprice);
         createdElement.innerHTML = `
             <span class="foodnamelist">${eac.foodname}</span>
             <span class="foodprice">${eac.foodprice}</span>
         `;
         dfwaiterFood.appendChild(createdElement);
+        createdElement.addEventListener("dblclick", (elm) => {
+            const foodname = elm.currentTarget.querySelector('.foodl-price span:first-child').innerText;
+            const foodprice = elm.currentTarget.querySelector('.foodl-price span:nth-child(2)').innerText;
+            let indexToDelete = OrderToBeSent["SHORTEATS"].findIndex(item => item.foodname === foodname && item.foodprice === foodprice);
+            if (indexToDelete !== -1) {
+                OrderToBeSent["SHORTEATS"].splice(indexToDelete, 1);
+            }
+        })
     })
-
     let foodheading2 = document.createElement("div")
     foodheading2.classList.add("foodtimeparts");
-    foodheading2.innerText = "MAIN COURSE";
+    foodheading2.innerText = `MAIN COURSE`;
     dfwaiterFood.appendChild(foodheading2);
+    let totalMainsP = 0;
     OrderToBeSent.MAINS.forEach((eac) => {
         const createdElement = document.createElement("div");
         createdElement.classList.add("foodl-price");
+        totalMainsP += parseFloat(eac.foodprice);
         createdElement.innerHTML = `
             <span class="foodnamelist">${eac.foodname}</span>
             <span class="foodprice">${eac.foodprice}</span>
         `;
         dfwaiterFood.appendChild(createdElement);
+        createdElement.addEventListener("dblclick", (elm) => {
+            const foodname = elm.currentTarget.querySelector('.foodl-price span:first-child').innerText;
+            const foodprice = elm.currentTarget.querySelector('.foodl-price span:nth-child(2)').innerText;
+            let indexToDelete = OrderToBeSent["MAINS"].findIndex(item => item.foodname === foodname && item.foodprice === foodprice);
+            if (indexToDelete !== -1) {
+                OrderToBeSent["MAINS"].splice(indexToDelete, 1);
+            }
+        })
     })
 
     let foodheading3 = document.createElement("div")
     foodheading3.classList.add("foodtimeparts");
     foodheading3.innerText = "GRILLS";
     dfwaiterFood.appendChild(foodheading3);
+    let totalGrillsP = 0;
     OrderToBeSent.GRILLS.forEach((eac) => {
         const createdElement = document.createElement("div");
         createdElement.classList.add("foodl-price");
+        totalGrillsP += parseFloat(eac.foodprice);
         createdElement.innerHTML = `
             <span class="foodnamelist">${eac.foodname}</span>
             <span class="foodprice">${eac.foodprice}</span>
         `;
         dfwaiterFood.appendChild(createdElement);
+        createdElement.addEventListener("dblclick", (elm) => {
+            const foodname = elm.currentTarget.querySelector('.foodl-price span:first-child').innerText;
+            const foodprice = elm.currentTarget.querySelector('.foodl-price span:nth-child(2)').innerText;
+            let indexToDelete = OrderToBeSent["GRILLS"].findIndex(item => item.foodname === foodname && item.foodprice === foodprice);
+            if (indexToDelete !== -1) {
+                OrderToBeSent["GRILLS"].splice(indexToDelete, 1);
+            }
+        })
     })
-}, 400)
+    let totalFoodPrice = totalShortsP + totalMainsP + totalGrillsP;
+    totalPrice.innerText = totalFoodPrice;
+    OrderToBeSent.totalPrice = totalFoodPrice;
+}, 700)
+
+
+
+
+// footer section 
+const foodItemContainer2 = document.getElementById("main-2-fromtotal");
+const sendFoodBtn = document.getElementById("sendFood");
+sendFoodBtn.addEventListener("click", () => {
+    socket.emit("foodtodisplayforchef", OrderToBeSent);
+    OrderToBeSent = {
+        SHORTEATS: [],
+        MAINS: [],
+        GRILLS: []
+    };
+})

@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+    {{!-- Info nedeed --}}
+    <span id="tableNo-i" style="display: none;">{{tableInfo}}</span>
     <div id="main-1">
         <header>
             <button class="nav-btn" id="shortEats">Short / Eats</button>
@@ -30,51 +32,25 @@
     <div id="main-2">
         <section id="main-2-fromtotal">
             <div class="tableInfo">
-                <span id="TableNo">7</span>
+                <span id="TableNo">{{tableInfo}}</span>
                 <span id="time-s-e">13.20 - 14.40</span>
             </div>
             <div class="foodtimeparts">SHORT EATS</div>
-                <div class="foodl-price">
+                {{!-- <div class="foodl-price">
                     <span class="foodnamelist">Chicken Chettinadu Bites</span>
                     <span class="foodprice">£9.5</span>
-                </div>
-                <div class="foodl-price">
-                    <span class="foodnamelist">Beef Rib Fry</span>
-                    <span class="foodprice">£12</span>
-                </div>
-            <div class="foodtimeparts">MAINS</div>
-                <div class="foodl-price">
-                    <span class="foodnamelist">Hopper(VG)</span>
-                    <span class="foodprice">£5.5</span>
-                </div>
-                <div class="foodl-price">
-                    <span class="foodnamelist">Hopper(VG)</span>
-                    <span class="foodprice">£5.5</span>
-                </div>
-                <div class="foodl-price">
-                    <span class="foodnamelist">Hopper(VG)</span>
-                    <span class="foodprice">£5.5</span>
-                </div>
-                <div class="foodl-price">
-                    <span class="foodnamelist">Dosa(V)</span>
-                    <span class="foodprice">£5.5</span>
-                </div>
+                </div> --}}
+            <div class="foodtimeparts">MAIN COURSE</div>
             <div class="foodtimeparts">GRILLS</div>
-                <div class="foodl-price">
-                    <span class="foodnamelist">Lentil + Root Vegetable Buriani + Raita(V)</span>
-                    <span class="foodprice">£19</span>
-                </div>
-                <div class="foodl-price">
-                    <span class="foodnamelist">Kalupol Roasted Half Chicken + Rasa</span>
-                    <span class="foodprice">£16</span>
-                </div>
         </section>
         <div id="totalprice">
-            <input type="text">
+            <button id="newOrder">New Order</button>
             <button>Print</button>
-            <button>Send</button>
+            <span id="totalPrice">£100.7</span>
+            <button id="sendFood">Send</button>
         </div>
     </div>
 </body>
+<script src="/socket.io/socket.io.js"></script>
 <script src="js/food.js"></script>
 </html>
