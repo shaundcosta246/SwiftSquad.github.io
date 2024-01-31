@@ -36,4 +36,20 @@ const order20 = new mongoose.model("order20", orderSchema);
 const order21 = new mongoose.model("order21", orderSchema);
 const order22 = new mongoose.model("order22", orderSchema);
 const order23 = new mongoose.model("order23", orderSchema);
-module.exports = { order1, order2, order3, order4, order5, order6, order7, order8, order9, order10, order11, order12, order14, order15, order16, order20, order21, order22, order23 };
+
+// down stairs 
+const order40 = new mongoose.model("order40", orderSchema);
+const order41 = new mongoose.model("order41", orderSchema);
+const order42 = new mongoose.model("order42", orderSchema);
+const order43 = new mongoose.model("order43", orderSchema);
+const order44 = new mongoose.model("order44", orderSchema);
+const order45 = new mongoose.model("order45", orderSchema);
+const order46 = new mongoose.model("order46", orderSchema);
+const order47 = new mongoose.model("order47", orderSchema);
+const order48 = new mongoose.model("order48", orderSchema);
+const order49 = new mongoose.model("order49", orderSchema);
+const order100 = new mongoose.model("order100", orderSchema);
+const order101 = new mongoose.model("order101", orderSchema);
+const order102 = new mongoose.model("order102", orderSchema);
+const order103 = new mongoose.model("order103", orderSchema);
+module.exports = { order1, order2, order3, order4, order5, order6, order7, order8, order9, order10, order11, order12, order14, order15, order16, order20, order21, order22, order23, order40, order41, order42, order43, order44, order45, order46, order47, order48, order49, order100, order101, order102, order103};

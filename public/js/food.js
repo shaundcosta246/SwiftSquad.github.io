@@ -113,7 +113,7 @@ const HOPPERSDOSA = [
 const KARIS = [
     {
         img: "https://www.lowlyfood.com/wp-content/uploads/2021/07/aubergine-and-potato-curry-37.jpg",
-        foodname: "Upcountry Aubergine Kari(VG)",
+        foodname: "Aubergine Kari(VG)",
         foodprice: "9.5"
     },
     {
@@ -133,7 +133,7 @@ const KARIS = [
     },
     {
         img: "https://cookerybay.com/wp-content/uploads/2023/06/Sri-Lankan-Black-Pork-Curry.jpg",
-        foodname: "Black Pork Kari",
+        foodname: "Pork Kari",
         foodprice: "12.5"
     },
     {
@@ -146,12 +146,12 @@ const KARIS = [
 const RICEROAST = [
     {
         img: "https://cookingfromheart.com/wp-content/uploads/2017/09/Veg-Biryani-in-Pressure-Cooker-6.jpg",
-        foodname: "Lentil + Root Vegetable Buriani + Raita(V)",
+        foodname: "Root Veg Buriani + Raita(V)",
         foodprice: "19"
     },
     {
         img: "https://th.bing.com/th/id/OIP.Z9SQHyPG6zMXKxOdkvM7wgHaE8?rs=1&pid=ImgDetMain",
-        foodname: "Kalupol Roasted Half Chicken + Rasa",
+        foodname: "Roasted Half Chicken",
         foodprice: "16"
     },
     {
@@ -161,12 +161,12 @@ const RICEROAST = [
     },
     {
         img: "https://i.pinimg.com/originals/44/3d/92/443d927a1a0183ef438f63aab1952de0.jpg",
-        foodname: "Banana Leaf Roasted Lemongrass Bream",
+        foodname: "Banana Lemongrass Bream",
         foodprice: "25"
     },
     {
         img: "https://tudorraj.com/wp-content/uploads/2022/02/lamb_biryani_pot-e1645637001602-1024x1024.jpg",
-        foodname: "Lamb Shank Buriani + Raita",
+        foodname: "Lamb Shank Buriani",
         foodprice: "28"
     }
 ];
@@ -179,7 +179,7 @@ const SIDES = [
     },
     {
         img: "https://www.mariaushakova.com/wp-content/uploads/2017/07/Detox-Kale-and-Beet-Salad-250.jpg",
-        foodname: "Beet + Cabbage + Kale Mallung(VG)",
+        foodname: "Kale Mallung(VG)",
         foodprice: "4"
     },
     {
@@ -252,7 +252,7 @@ let OrderToBeSent = {
 ShortEatsbtn.addEventListener("click", () => {
     clearallbtncolor();
     clearfoodcontent();
-    ShortEatsbtn.style.background = "red";
+    ShortEatsbtn.style.background = "#ff0000ba";
     SHORTEATS.forEach((e) => {
         const createdElement = document.createElement("div");
         createdElement.classList.add("main-items");
@@ -277,11 +277,12 @@ ShortEatsbtn.addEventListener("click", () => {
 hopperDosabtn.addEventListener("click", () => {
     clearallbtncolor();
     clearfoodcontent();
-    hopperDosabtn.style.background = "red";
+    hopperDosabtn.style.background = "#ff0000ba";
     HOPPERSDOSA.forEach((e) => {
         const createdElement = document.createElement("div");
         createdElement.classList.add("main-items");
         createdElement.innerHTML = `
+        <div class="shadeimg"></div>
         <img src="${e.img}" alt="">
         <div class="main-item-con-p">
             <span>${e.foodname}</span>
@@ -300,7 +301,7 @@ hopperDosabtn.addEventListener("click", () => {
 karisbtn.addEventListener("click", () => {
     clearallbtncolor();
     clearfoodcontent();
-    karisbtn.style.background = "red";
+    karisbtn.style.background = "#ff0000ba";
     KARIS.forEach((e) => {
         const createdElement = document.createElement("div");
         createdElement.classList.add("main-items");
@@ -324,7 +325,7 @@ karisbtn.addEventListener("click", () => {
 grillsbtn.addEventListener("click", () => {
     clearallbtncolor();
     clearfoodcontent();
-    grillsbtn.style.background = "red";
+    grillsbtn.style.background = "#ff0000ba";
     RICEROAST.forEach((e) => {
         const createdElement = document.createElement("div");
         createdElement.classList.add("main-items");
@@ -348,7 +349,7 @@ grillsbtn.addEventListener("click", () => {
 sidesbtn.addEventListener("click", () => {
     clearallbtncolor();
     clearfoodcontent();
-    sidesbtn.style.background = "red";
+    sidesbtn.style.background = "#ff0000ba";
     SIDES.forEach((e) => {
         const createdElement = document.createElement("div");
         createdElement.classList.add("main-items");
@@ -372,7 +373,7 @@ sidesbtn.addEventListener("click", () => {
 dessertsbtn.addEventListener("click", () => {
     clearallbtncolor();
     clearfoodcontent();
-    dessertsbtn.style.background = "red";
+    dessertsbtn.style.background = "#ff0000ba";
     DESSERT.forEach((e) => {
         const createdElement = document.createElement("div");
         createdElement.classList.add("main-items");

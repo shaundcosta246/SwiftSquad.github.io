@@ -12,7 +12,7 @@ const cors = require('cors');
 
 // database
 require("./db/conn");
-const {order1, order2, order3, order4, order5, order6, order7, order8, order9, order10, order11, order12, order14, order15, order16, order20, order21, order22, order23,} = require("./models/order");
+const {order1, order2, order3, order4, order5, order6, order7, order8, order9, order10, order11, order12, order14, order15, order16, order20, order21, order22, order23, order40, order41, order42, order43, order44, order45, order46, order47, order48, order49, order100, order101, order102, order103} = require("./models/order");
 
 
 // Path 
@@ -79,9 +79,31 @@ app.get("/food", (req, res) => {
     res.status(201).render("food");
 })
 app.get("/chefscreen", (req, res) => {
-    res.status(201).render("chefscreen")
+    res.status(201).render("chefscreen");
+})
+app.get("/downtable", (req, res) => {
+    res.status(201).render("downtable");
 })
 
+
+// api for tables 
+app.get("/allTableFood:id", async(req, res) => {
+    try{
+        const tableNoTF = req.params.id
+        const order = await order1.find(req.query);
+        // res.send(order);
+        const wtp = `order${tableNoTF}`;
+        if(eval(wtp)){
+            const order = eval(wtp);
+            const findData = await order.find({});
+            res.send(findData);
+        }else{
+            console.log("Sorry wrong input")
+        }
+    }catch(error){
+        console.log(error + "This is custom error");
+    }
+})
 
 
 app.post("/insertfoods", async (req, res) => {

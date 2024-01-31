@@ -34,8 +34,8 @@ header button{
     height: 80%;
     padding: 0px 30px;
     background-color: rgba(0, 0, 0, 0.693);
-    color: white;
-    border-radius: 3px;
+    color: #ffffffed;
+    border-radius: 16px;
     outline: none;
     border: none;
 }
@@ -43,14 +43,13 @@ header button:hover{
     cursor: pointer;
 }
 #main-item-con{
-    height: 90%;
-    /* border: 1px solid rgba(0, 0, 0, 0.611); */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    max-height: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 250px 250px;
     gap: 20px;
     overflow-y: auto;
-    padding: 20px 0px;
+    padding: 20px;
 }
 #main-item-con::-webkit-scrollbar{
     width: 4px;
@@ -62,35 +61,39 @@ header button:hover{
     /* border-radius: 4px; */
 }
 .main-items{
-    height: 40%;
-    width: 30%;
+    height: 100%;
+    width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.385);
     border-radius: 10px;
     overflow: hidden;
     position: relative;
 }
+.main-items:hover{
+    box-shadow: 1px 1px 3px rgba(33, 33, 33, 0.512);
+}
 .shadeimg{
     position: absolute;
     top: 0;
     right: 0;
-    height: 75%;
+    height: 80%;
     width: 100%;
-    background-color: rgb(0 0 0 / 22%);
+    background-color: rgb(0 0 0 / 34%);
 }
 .main-items img{
-    height: 75%;
+    height: 80%;
     width: 100%;
 }
 .main-item-con-p{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 8px;
+    padding: 0px 5px;
+    height: 20%;
 }
 .main-item-con-p span{
     font-family: var(--MainFamily);
     font-size: 17px;
-    color: rgba(0, 0, 0, 0.814);
+    color: rgba(0, 0, 0, 0.722);
 }
 
 
@@ -192,7 +195,7 @@ header button:hover{
 #totalprice button{
     font-family: var(--MainFamily);
     padding: 7px 13px;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.788);
     color: white;
     border: none;
     border-radius: 3px;
