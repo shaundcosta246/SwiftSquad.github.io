@@ -3,7 +3,7 @@ const ArrayoftableBTN = Array.from(tableBTN);
 
 ArrayoftableBTN.forEach(async(eac) => {
     const tableNo = eac.innerText;
-    const data = await fetch(`http://localhost:8000/allTableFood${tableNo}`);
+    const data = await fetch(`http://localhost:8000/allTableFood?orderTable=${tableNo}`);
     const response = await data.json();
     const totalPrice = response[0].price;
     if(totalPrice === ""){
@@ -11,7 +11,6 @@ ArrayoftableBTN.forEach(async(eac) => {
     }else{
         const createdElement = document.createElement("span");
         createdElement.innerText = `£${totalPrice}`;
-        const parentElement = eac.parentNode;
         eac.appendChild(createdElement);
     }
 })

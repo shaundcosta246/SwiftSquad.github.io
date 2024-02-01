@@ -37,6 +37,10 @@ header{
 }
 #BtnBill{
     margin-left: auto;
+    border: 2px solid rgba(16, 252, 24, 0.621);
+}
+#BtnBill span{
+    color: rgba(16, 252, 24, 0.621);
 }
 .headerChild a{
     font-family: var(--mainFamily);
@@ -65,7 +69,7 @@ main{
     grid-template-rows: repeat(9, 1fr);
     grid-template-columns: repeat(8, 1fr);
     position: relative;
-    background-color: #eeeeee85;
+    background-color: #eeeeeed6;
 }
 main::before {
     content: "";

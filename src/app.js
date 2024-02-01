@@ -12,7 +12,7 @@ const cors = require('cors');
 
 // database
 require("./db/conn");
-const {order1, order2, order3, order4, order5, order6, order7, order8, order9, order10, order11, order12, order14, order15, order16, order20, order21, order22, order23, order40, order41, order42, order43, order44, order45, order46, order47, order48, order49, order100, order101, order102, order103} = require("./models/order");
+const order = require("./models/order");
 
 
 // Path 
@@ -33,36 +33,51 @@ app.use(express.urlencoded({ extended: true }));
 io.on("connection", (socket) => {
     socket.on("foodtodisplayforchef", async(data) => {
         try{
-            let shortseats  = data.SHORTEATS
-            let stringShortEats = JSON.stringify(shortseats);
-            let mains = data.MAINS
-            let stringMains = JSON.stringify(mains);
-            let grills = data.GRILLS
-            let stringGrills = JSON.stringify(grills);
+            let shortseats  = data.SHORTEATS;
+            let mains = data.MAINS;
+            let grills = data.GRILLS;
             let food = {
-                SHORTEATS: stringShortEats,
-                MAINS: stringMains,
-                GRILLS: stringGrills
+                SHORTEATS: shortseats,
+                MAINS: mains,
+                GRILLS: grills
             };
-            let stringfyFood = JSON.stringify(food);
-            const tableNo = data.tableNo
-            const wtp = `order${tableNo}`;
-            if(eval(wtp)){
-                const order = eval(wtp);
-                const savedOrder = new order({
-                    orderTable: tableNo,
-                    food: stringfyFood,
-                    price: data.totalPrice
-                });
-                await savedOrder.save();
-                console.log("New order saved")
-            }else{
-                console.log("Sorry could not insert the data of this order")
-            }
+            // let stringfyFood = JSON.stringify(food);
+            const savedOrder = new order({
+                orderTable: data.tableNo,
+                food: food,
+                price: data.totalPrice
+            });
+            savedOrder.save();
         }catch(error){
-            console.log(error)
+            if (error instanceof MongoServerError && error.code === 11000) {
+                console.error(`Duplicate key error: ${error.message}`);
+                // Handle the duplicate key error here
+            } else {
+                console.error(`An error occurred: ${error.message}`);
+            }
         }
         io.emit("foodforchef", data)
+    })
+    socket.on("addfoodtodisplay", (data) => {
+        io.emit("foodforchef", data);
+    })
+    socket.on("updateOrder", async(data) => {
+        try{
+            const updatedOrder = await order.findOneAndUpdate(
+                { "orderTable": data.tableNo }, // Assuming tableNo is the identifier for your order
+                { $push: { "food.SHORTEATS": { $each: data.SHORTEATS } }, $inc: { "price": data.totalPrice } },
+                { $push: { "food.MAINS": { $each: data.MAINS } }, $inc: { "price": data.totalPrice } },
+                { $push: { "food.GRILLS": { $each: data.GRILLS } }, $inc: { "price": data.totalPrice } },
+                { new: true }
+            );
+        }catch(error){
+            if (error instanceof MongoServerError && error.code === 11000) {
+                console.error(`Duplicate key error: ${error.message}`);
+                // Handle the duplicate key error here
+            } else {
+                console.error(`An error occurred: ${error.message}`);
+            }
+        }
     })
     socket.on("disconnect", () => {})
 })
@@ -84,22 +99,16 @@ app.get("/chefscreen", (req, res) => {
 app.get("/downtable", (req, res) => {
     res.status(201).render("downtable");
 })
+app.get("/bill", (req, res) => {
+    res.status(201).render("bill");
+})
 
 
 // api for tables 
-app.get("/allTableFood:id", async(req, res) => {
+app.get("/allTableFood", async(req, res) => {
     try{
-        const tableNoTF = req.params.id
-        const order = await order1.find(req.query);
-        // res.send(order);
-        const wtp = `order${tableNoTF}`;
-        if(eval(wtp)){
-            const order = eval(wtp);
-            const findData = await order.find({});
-            res.send(findData);
-        }else{
-            console.log("Sorry wrong input")
-        }
+        const orderTS = await order.find(req.query);
+        res.send(orderTS);
     }catch(error){
         console.log(error + "This is custom error");
     }
@@ -116,7 +125,14 @@ app.post("/insertfoods", async (req, res) => {
     }
 });
 
-
+app.post("/checkfood", async(req, res) => {
+    try{
+        let tableNo = req.body.tableNo;
+        res.status(201).render("billshowfood", {tableInfo: tableNo})
+    }catch(error){
+        console.log(error)
+    }
+})
 
 
 

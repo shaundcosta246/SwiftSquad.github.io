@@ -42,11 +42,14 @@ header button{
 header button:hover{
     cursor: pointer;
 }
+#FoodInfoBill{
+    margin-left: auto;
+}
 #main-item-con{
     max-height: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 250px 250px;
+    grid-template-rows: 32vh 32vh;
     gap: 20px;
     overflow-y: auto;
     padding: 20px;
@@ -207,4 +210,31 @@ header button:hover{
 #totalprice button:hover{
     cursor: pointer;
     background-color: #000000cf;
+}
+#totalPrice{
+    color: white;
+    font-family: var(--MainFamily);
+    font-weight: 500;
+    margin-left: auto;
+}
+
+
+
+
+
+
+
+
+/* foodInfo */
+.foodInfoCon{
+    width: 100%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.tableInfof{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 35px;
+    background-color: rgba(0, 0, 0, 0.693);
 }

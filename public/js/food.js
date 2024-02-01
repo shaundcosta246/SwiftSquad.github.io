@@ -484,8 +484,85 @@ setInterval(() => {
 // footer section 
 const foodItemContainer2 = document.getElementById("main-2-fromtotal");
 const sendFoodBtn = document.getElementById("sendFood");
-sendFoodBtn.addEventListener("click", () => {
-    socket.emit("foodtodisplayforchef", OrderToBeSent);
+sendFoodBtn.addEventListener("click", async() => {
+    let checkifavailable = await fetch(`http://localhost:8000/allTableFood?orderTable=${tableNumber.innerText}`);
+    const response = await checkifavailable.json();
+    // const totalPrice = response[0].price;
+    if(response.length === 0){
+        socket.emit("foodtodisplayforchef", OrderToBeSent);
+        OrderToBeSent = {
+            SHORTEATS: [],
+            MAINS: [],
+            GRILLS: []
+        };
+    }else{
+        alert("Sorry this order already exists.....")
+    }
+})
+
+
+
+const foodInfo = document.getElementById("FoodInfoBill");
+foodInfo.addEventListener("click", async() => {
+    clearfoodcontent();
+    try{
+        const data = await fetch(`http://localhost:8000/allTableFood?orderTable=${tableNumber.innerText}`);
+        const response = await data.json();
+        const odata = response[0];
+        const createParent = document.createElement("div");
+        createParent.classList.add("foodInfoCon");
+        foodParContainer.appendChild(createParent);
+        const createdElement = document.createElement("div");
+        createdElement.classList.add("tableInfof");
+        createdElement.innerHTML = `
+            <span id="TableNo">${tableNumber.innerText}</span>
+            <span id="time-s-e">13.20 - 14.40</span>
+        `;
+        createParent.appendChild(createdElement);
+        odata.food.SHORTEATS.forEach((eac) => {
+            const createdElement = document.createElement("div");
+            createdElement.classList.add("foodl-price");
+            createdElement.innerHTML = `
+            <span class="foodnamelist">${eac.foodname}</span>
+            <span class="foodprice">${eac.foodprice}</span>
+        `;
+        createParent.appendChild(createdElement);
+        })
+        odata.food.MAINS.forEach((eac) => {
+            const createdElement = document.createElement("div");
+            createdElement.classList.add("foodl-price");
+            createdElement.innerHTML = `
+            <span class="foodnamelist">${eac.foodname}</span>
+            <span class="foodprice">${eac.foodprice}</span>
+        `;
+        createParent.appendChild(createdElement);
+        })
+        odata.food.GRILLS.forEach((eac) => {
+            const createdElement = document.createElement("div");
+            createdElement.classList.add("foodl-price");
+            createdElement.innerHTML = `
+            <span class="foodnamelist">${eac.foodname}</span>
+            <span class="foodprice">${eac.foodprice}</span>
+        `;
+        createParent.appendChild(createdElement);
+        })
+        const createdElementT = document.createElement("div");
+        createdElementT.classList.add("tableInfof");
+        createdElementT.innerHTML = `
+            <span id="totalPrice">£${odata.price}</span>
+
+        `;
+        createParent.appendChild(createdElementT)
+    }catch(error){
+        console.log(error);
+    }
+})
+
+
+const addOrderBtn = document.getElementById("addOrder");
+addOrderBtn.addEventListener("click", () => {
+    socket.emit("updateOrder", OrderToBeSent);
+    socket.emit("addfoodtodisplay", OrderToBeSent);
     OrderToBeSent = {
         SHORTEATS: [],
         MAINS: [],
