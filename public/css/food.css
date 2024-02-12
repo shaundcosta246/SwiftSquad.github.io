@@ -32,7 +32,7 @@ header{
 header button{
     font-family: var(--MainFamily);
     height: 80%;
-    padding: 0px 30px;
+    padding: 0px 25px;
     background-color: rgba(0, 0, 0, 0.693);
     color: #ffffffed;
     border-radius: 16px;

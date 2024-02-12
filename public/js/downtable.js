@@ -1,10 +1,9 @@
 const tableBTN = document.getElementsByClassName("tableBTN");
 const ArrayoftableBTN = Array.from(tableBTN);
-const localFetch = `http://localhost:8000/allTableFood?orderTable=${tableNo}`
-const liveFetch = `https://squadspeaks.onrender.com/allTableFood?orderTable=${tableNo}`;
+
 ArrayoftableBTN.forEach(async(eac) => {
     const tableNo = eac.innerText;
-    const data = await fetch(`https://squadspeaks.onrender.com/allTableFood?orderTable=${tableNo}`);
+    const data = await fetch(`https://squadspeaks.onrender.com/allTableFood${tableNo}`);
     const response = await data.json();
     const totalPrice = response[0].price;
     if(totalPrice === ""){

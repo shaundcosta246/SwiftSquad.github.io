@@ -35,21 +35,26 @@ header{
     border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 10px;
 }
+#BtnBill{
+    margin-left: auto;
+    border: 2px solid rgba(16, 252, 24, 0.621);
+}
+#BtnBill span{
+    color: rgba(16, 252, 24, 0.621);
+}
 .headerChild a{
     font-family: var(--mainFamily);
     font-size: 12px;
     font-weight: 500;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.922);
+    width: 100%;
 }
 .headerChild span{
     color: rgba(255, 255, 255, 0.922);
 }
 .headerChildi{
     font-weight: 200;
-}
-#BtnBill{
-    margin-left: auto;
 }
 .headerChild:hover{
     cursor: pointer;
@@ -64,7 +69,7 @@ main{
     grid-template-rows: repeat(9, 1fr);
     grid-template-columns: repeat(8, 1fr);
     position: relative;
-    background-color: #eeeeee85;
+    background-color: #eeeeeed6;
 }
 main::before {
     content: "";
@@ -82,6 +87,7 @@ main::before {
 .main-child{
     height: 100%;
     width: 100%;
+    background-color: rgb(29 29 29 / 91%);
     border: 3px solid rgb(0 0 0 / 40%);
     display: flex;
     align-items: center;
@@ -89,13 +95,17 @@ main::before {
     color: white;
     border-radius: 17px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .main-child:hover{
     cursor: pointer;
 }
 .main-child form{
     width: 100%;
-    height: 100%;
+    height: 60%;
+    overflow: hidden;
 }
 .main-child form input{
     display: none;
@@ -104,7 +114,8 @@ main::before {
     height: 100%;
     width: 100%;
     font-family: var(--mainFamily);
-    background-color: rgb(29 29 29 / 98%);
+    /* background-color: rgb(29 29 29 / 91%); */
+    background-color: transparent;
     color: rgba(255, 255, 255, 0.707);
     border: none;
     outline: none;
@@ -115,75 +126,105 @@ main::before {
     color: #00ff1d9e;
     margin-left: 30px;
 }
-
-
-#m-40{
-    grid-column-start: 3;
-    grid-row-start: 7;
-}
-#m-41{
-    grid-column-start: 3;
-    grid-row-start: 6;
-}
-#m-42{
-    grid-column-start: 3;
-    grid-row-start: 5;
+.time{
+    height: 40%;
+    width: 100%;
+    color: black;
+    background-color: #00ff1ec8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mainFamily);
+    font-weight: 400;
 }
 
-#m-43{
+
+
+#m-1{
+    grid-column-start: 2;
+    grid-row-end: 8;
+}
+#m-2{
+    grid-column-start: 2;
+    grid-row-end: 7;
+}
+#m-3{
+    grid-column-start: 2;
+    grid-row-end: 6;
+}
+#m-4{
+    grid-column-start: 2;
+    grid-row-end: 5;
+}
+
+#m-7{
+    grid-column-start: 4;
+    grid-row-end: 7;
+}
+#m-8{
+    grid-column-start: 4;
+    grid-row-end: 6;
+}
+#m-9{
+    grid-column-start: 4;
+    grid-row-end: 5;
+}
+
+#m-10{
     grid-column-start: 5;
-    grid-row-start: 4;
+    grid-row-end: 5;
+    margin-left: 7px;
 }
-#m-44{
-    grid-column-start: 6;
-    grid-row-start: 4;
+#m-11{
+    grid-column-start: 5;
+    grid-row-end: 6;
+    margin-left: 7px;
+}
+#m-12{
+    grid-column-start: 5;
+    grid-row-end: 7;
+    margin-left: 7px;
 }
 
 
-#m-45{
-    grid-column-start: 5;
-    grid-row-start: 7;
-}
-#m-46{
-    grid-column-start: 5;
-    grid-row-start: 6;
-}
-#m-47{
-    grid-column-start: 6;
-    grid-row-start: 6;
-}
-#m-48{
-    grid-column-start: 6;
-    grid-row-start: 7;
-}
-
-#m-49{
-    margin: 0px auto;
-    grid-column-start: 5;
-    grid-column-end: 7;
-    grid-row-start: 9;
-    height: 70%;
-    width: 50%;
-    transform: translateY(-30px);
-}
-
-#m-100{
-    grid-column-start: 1;
-    grid-row-start: 3;
-    transform: translate(55px, 50px);
-}
-#m-101{
-    grid-column-start: 3;
-    grid-row-start: 2;
-    transform: translateX(-45px);
-}
-#m-102{
-    grid-column-start: 5;
-    grid-row-start: 2;
-    transform: translateX(-65px);
-}
-#m-103{
+#m-23{
     grid-column-start: 7;
-    grid-row-start: 2;
-    transform: translateX(-120px);
+    grid-row-end: 6;
+}
+#m-22{
+    grid-column-start: 7;
+    grid-row-end: 5;
+}
+#m-21{
+    grid-column-start: 7;
+    grid-row-end: 4;
+}
+#m-20{
+    grid-column-start: 7;
+    grid-row-end: 3;
+}
+
+
+#m-5{
+    grid-column-start: 4;
+    grid-row-end: 3;
+}
+#m-6{
+    grid-column-start: 5;
+    grid-row-end: 3;
+    margin-left: 7px;
+}
+
+
+#m-14{
+    grid-column-start: 6;
+    grid-row-end: 9;
+}
+#m-15{
+    grid-column-start: 5;
+    grid-row-end: 9;
+}
+#m-16{
+    grid-column-start: 4;
+    grid-row-end: 9
 }

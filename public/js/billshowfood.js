@@ -1,6 +1,6 @@
 const tableNo = document.getElementById("tableNo").innerText;
-const localFetch = `http://localhost:8000/allTableFood?orderTable=${tableNo}`
-const liveFetch = `https://squadspeaks.onrender.com/allTableFood?orderTable=${tableNo}`;
+// "http://localhost:8000"
+// "https://squadspeaks.onrender.com/"
 const getTableData = async() => {
     try{
         const data = await fetch(`https://squadspeaks.onrender.com/allTableFood?orderTable=${tableNo}`);

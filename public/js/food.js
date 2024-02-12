@@ -493,7 +493,8 @@ sendFoodBtn.addEventListener("click", async() => {
         OrderToBeSent = {
             SHORTEATS: [],
             MAINS: [],
-            GRILLS: []
+            GRILLS: [],
+            tableNo: tableNumber.innerText
         };
     }else{
         alert("Sorry this order already exists.....")
@@ -566,6 +567,7 @@ addOrderBtn.addEventListener("click", () => {
     OrderToBeSent = {
         SHORTEATS: [],
         MAINS: [],
-        GRILLS: []
+        GRILLS: [],
+        tableNo: tableNumber.innerText
     };
 })

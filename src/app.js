@@ -41,11 +41,24 @@ io.on("connection", (socket) => {
                 MAINS: mains,
                 GRILLS: grills
             };
-            // let stringfyFood = JSON.stringify(food);
+            const currentTime = new Date();
+            const hours = currentTime.getHours();
+            const minutes = currentTime.getMinutes();
+            // added time  
+            let addedHours = currentTime.getHours() + 2;
+            let addedMinutes = currentTime.getMinutes() + 60;
+            if (addedMinutes >= 60) {
+                addedMinutes -= 60;
+                addedHours++;
+            }
+        const ti = `${hours}:${minutes}`;
+        const ad = `${addedHours}:${addedMinutes}`
             const savedOrder = new order({
                 orderTable: data.tableNo,
                 food: food,
-                price: data.totalPrice
+                price: data.totalPrice,
+                startTime: ti,
+                endTime: ad
             });
             savedOrder.save();
         }catch(error){
@@ -63,20 +76,23 @@ io.on("connection", (socket) => {
     })
     socket.on("updateOrder", async(data) => {
         try{
+            let addGrills = data.GRILLS;
+            let addMains = data.MAINS;
+            let addShorteats = data.SHORTEATS;
             const updatedOrder = await order.findOneAndUpdate(
                 { "orderTable": data.tableNo }, // Assuming tableNo is the identifier for your order
-                { $push: { "food.SHORTEATS": { $each: data.SHORTEATS } }, $inc: { "price": data.totalPrice } },
-                { $push: { "food.MAINS": { $each: data.MAINS } }, $inc: { "price": data.totalPrice } },
-                { $push: { "food.GRILLS": { $each: data.GRILLS } }, $inc: { "price": data.totalPrice } },
+                { 
+                    $push: { 
+                        "food.SHORTEATS": { $each: addShorteats },
+                        "food.MAINS": { $each: addMains },
+                        "food.GRILLS": { $each: addGrills }
+                    },
+                    $inc: { "price": data.totalPrice }
+                },
                 { new: true }
             );
         }catch(error){
-            if (error instanceof MongoServerError && error.code === 11000) {
-                console.error(`Duplicate key error: ${error.message}`);
-                // Handle the duplicate key error here
-            } else {
-                console.error(`An error occurred: ${error.message}`);
-            }
+            console.log(error);
         }
     })
     socket.on("disconnect", () => {})
@@ -99,8 +115,8 @@ app.get("/chefscreen", (req, res) => {
 app.get("/downtable", (req, res) => {
     res.status(201).render("downtable");
 })
-app.get("/bill", (req, res) => {
-    res.status(201).render("bill");
+app.get("/reception", (req, res) => {
+    res.status(201).render("reception");
 })
 
 
