@@ -1,5 +1,6 @@
 const tableBTN = document.getElementsByClassName("tableBTN");
 const ArrayoftableBTN = Array.from(tableBTN);
+const fetchLink = "https://squadspeaks.onrender.com/";
 
 ArrayoftableBTN.forEach(async(eac) => {
     const tableNo = eac.innerText;
