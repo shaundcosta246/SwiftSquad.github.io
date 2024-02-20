@@ -5,6 +5,8 @@ const refreshPage = () => {
     location.reload();
 }
 
+
+
 // all navigation buttons
 const navigationBtns = document.getElementsByClassName("nav-btn");
 const ShortEatsbtn = document.getElementById("shortEats");
@@ -484,8 +486,9 @@ setInterval(() => {
 // footer section 
 const foodItemContainer2 = document.getElementById("main-2-fromtotal");
 const sendFoodBtn = document.getElementById("sendFood");
+const fetchLink = "https://squadspeaks.onrender.com/";
 sendFoodBtn.addEventListener("click", async() => {
-    let checkifavailable = await fetch(`https://squadspeaks.onrender.com/allTableFood?orderTable=${tableNumber.innerText}`);
+    let checkifavailable = await fetch(`${fetchLink}allTableFood?orderTable=${tableNumber.innerText}`);
     const response = await checkifavailable.json();
     // const totalPrice = response[0].price;
     if(response.length === 0){
@@ -507,7 +510,7 @@ const foodInfo = document.getElementById("FoodInfoBill");
 foodInfo.addEventListener("click", async() => {
     clearfoodcontent();
     try{
-        const data = await fetch(`https://squadspeaks.onrender.com/allTableFood?orderTable=${tableNumber.innerText}`);
+        const data = await fetch(`${fetchLink}allTableFood?orderTable=${tableNumber.innerText}`);
         const response = await data.json();
         const odata = response[0];
         const createParent = document.createElement("div");

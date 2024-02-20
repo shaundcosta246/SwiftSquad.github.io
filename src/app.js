@@ -69,7 +69,9 @@ io.on("connection", (socket) => {
                 console.error(`An error occurred: ${error.message}`);
             }
         }
-        io.emit("foodforchef", data)
+        io.emit("foodforchef", data);
+        io.emit("foodfordosasection", data);
+        io.emit("foodforKothusection", data);
     })
     socket.on("addfoodtodisplay", (data) => {
         io.emit("foodforchef", data);
@@ -91,6 +93,13 @@ io.on("connection", (socket) => {
                 },
                 { new: true }
             );
+        }catch(error){
+            console.log(error);
+        }
+    })
+    socket.on("deleteOrder", async(data) => {
+        try{
+            const result = await order.findOneAndDelete({orderTable: data});
         }catch(error){
             console.log(error);
         }
@@ -117,6 +126,12 @@ app.get("/downtable", (req, res) => {
 })
 app.get("/reception", (req, res) => {
     res.status(201).render("reception");
+})
+app.get("/admin", (req, res) => {
+    res.status(201).render("admin");
+})
+app.get("/dosaKothuSection", (req, res) => {
+    res.status(201).render("dosaKothuSection");
 })
 
 

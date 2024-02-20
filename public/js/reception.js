@@ -19,6 +19,7 @@
 //     })
 // });
 
+const fetchLink = "https://squadspeaks.onrender.com/";
 
 
 let mainChild = document.getElementsByClassName("main-child");
@@ -28,7 +29,7 @@ mainChildArray.forEach(async(eac) => {
     let childers = eac.querySelector(".tableBTN");
     const tableTF = childers.innerText;
 
-    const data = await fetch(`https://squadspeaks.onrender.com/allTableFood?orderTable=${tableTF}`);
+    const data = await fetch(`${fetchLink}allTableFood?orderTable=${tableTF}`);
     const response = await data.json();
     if(response[0] === undefined){
         console.log("Empty Table...")
