@@ -486,7 +486,7 @@ setInterval(() => {
 // footer section 
 const foodItemContainer2 = document.getElementById("main-2-fromtotal");
 const sendFoodBtn = document.getElementById("sendFood");
-const fetchLink = "https://squadspeaks.com/";
+const fetchLink = "https://www.squadspeaks.com/";
 sendFoodBtn.addEventListener("click", async() => {
     let checkifavailable = await fetch(`${fetchLink}allTableFood?orderTable=${tableNumber.innerText}`);
     const response = await checkifavailable.json();

@@ -1,7 +1,7 @@
 const tableBTN = document.getElementsByClassName("tableBTN");
 const ArrayoftableBTN = Array.from(tableBTN);
 
-const fetchLink = "https://squadspeaks.com/";
+const fetchLink = "https://www.squadspeaks.com/";
 
 
 ArrayoftableBTN.forEach(async(eac) => {
