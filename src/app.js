@@ -15,6 +15,14 @@ require("./db/conn");
 const order = require("./models/order");
 
 
+// api permission 
+app.use(cors({
+    // origin: "https://www.squadspeaks.com",
+    origin: "*",
+}));
+
+
+
 // Path 
 const publicPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../template/views");
