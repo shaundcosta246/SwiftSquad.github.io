@@ -19,7 +19,7 @@
 //     })
 // });
 
-const fetchLink = "https://squadspeaks.onrender.com/";
+const fetchLink = "https://squadspeaks.com/";
 
 
 let mainChild = document.getElementsByClassName("main-child");

@@ -4,7 +4,7 @@ const clearcontent = () => {
     parentElement.innerHTML = ``;
 }
 
-const fetchLink = "https://squadspeaks.onrender.com/";
+const fetchLink = "https://squadspeaks.com/";
 
 const upBtn = document.getElementById("upBtn");
 const downBtn = document.getElementById("downBtn");
