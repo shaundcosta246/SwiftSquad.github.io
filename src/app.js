@@ -7,7 +7,8 @@ const path = require("path");
 const http = require("http");
 const socketio = require("socket.io");
 const server = http.createServer(app);
-const io = socketio(server);
+const io = require('socket.io')(server);
+// const io = socketio(server);
 const cors = require("cors");
 // const exphbs = require("express-handlebars");
 
@@ -35,6 +36,16 @@ app.use(cors({
 }));
 
 
+io.on("connection", (socket) => {
+    socket.on("userloaded", async({name, room}) => {
+        socket.join(room);
+        console.log(name + "User connected to " + room);
+    });
+    socket.on("message", async({message, room}) => {
+        console.log("Message is from "+ room +" " +message)
+        io.to(room).emit("receiveMessage", ({message, room}));
+    });
+})
 
 
 app.get("/", (req, res) => {
@@ -54,15 +65,6 @@ app.get("/sign", (req, res) => {
 })
 
 
-io.on("connection", (socket) => {
-    socket.on("userloaded", async({name, room}) => {
-        socket.join(room);
-    });
-    socket.on("message", async({message, room}) => {
-        console.log("Message is from "+ room +" " +message)
-        io.to(room).emit("receiveMessage", message)
-    });
-})
 
 
 // POST 

@@ -1,14 +1,11 @@
 const socket = io();
+let un = JSON.parse(localStorage.getItem("userInfo"));
 
-let user = {
-    name: "Shaun",
-    room: "Hoppers Marylebone FOH"
-}
-// setInterval(() => {
-//     console.log(user.room)
-// },1000);
+let username = un.name;
+let roomname = "Hoppers Marylebone FOH";
 
-socket.emit("userloaded", ({name: user.name, room: user.room}))
+
+socket.emit("userloaded", ({name: username, room: roomname}));
 
 let groupimaged = document.getElementById("groupimage");
 let groupnamed = document.getElementById("groupname");
@@ -32,15 +29,15 @@ let unclickeveryelement = () => {
 }
 
 senderButtonArray.forEach((eac) => {
-    eac.addEventListener("click", (e) => {
+    eac.addEventListener("click", async(e) => {
         unclickeveryelement();
         eac.style.background = "white";
         const ParentDiv = e.target.parentElement;
         const firstChild = ParentDiv.children[0];
         const secondChild = ParentDiv.children[1];
         changeGroupNav(firstChild, secondChild);
-        user.room = secondChild.innerText;
-        socket.emit("userloaded", ({name: user.name, room: user.room}))
+        roomname = secondChild.innerText;
+        socket.emit("userloaded", ({name: username, room: roomname}))
     })
 })
 
@@ -49,11 +46,13 @@ const chatform = document.getElementById("m2-inputDiv");
 const messageValue = document.getElementById("messageValue");
 chatform.addEventListener("submit", (e) => {
     e.preventDefault();
-    let message = messageValue.value
-    let room = user.room
+    let message = messageValue.value;
+    let room = roomname;
     if(message === ""){
         alert("Please type something");
     }else{
+        console.log(`My room is ${room}
+            and my message is ${message}`);
         socket.emit("message", ({message, room}));
         e.target.elements.messageValue.value = "";
 		e.target.elements.messageValue.focus();
@@ -74,7 +73,11 @@ const appendMessage = (message, username) => {
 // receive data 
 const messageDiv = document.getElementById("m2-messages");
 messageDiv.scrollTop = messageDiv.scrollHeight;
-socket.on("receiveMessage", (data) => {
-    appendMessage(data, "Yeschef")
-	messageDiv.scrollTop = messageDiv.scrollHeight;
+socket.on("receiveMessage", ({message, room}) => {
+    if(roomname === room){
+        appendMessage(message, username)
+        messageDiv.scrollTop = messageDiv.scrollHeight;
+    }else{
+        console.log("This is not our message")
+    }
 })
