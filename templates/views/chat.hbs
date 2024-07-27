@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/chat.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <nav>
+        <a id="navI" href="/"><img src="https://static.vecteezy.com/system/resources/previews/003/026/146/non_2x/yc-logo-monogram-modern-design-template-free-vector.jpg" alt=""></a>
+        <div id="flex-nav-bar">
+            <a class="flex-nav" href="/social">
+                <span class="material-symbols-outlined">diversity_1</span>
+                <span class="nav-w">Social</span>
+            </a>
+            <a class="flex-nav" href="/week">
+                <span class="material-symbols-outlined navIcon">calendar_month</span>
+                <span class="nav-w">Week</span>
+            </a>
+            <a class="flex-nav" id="social" href="/chat">
+                <span class="material-symbols-outlined navIcon">chat</span>
+                <span class="nav-w">Chat</span>
+            </a>
+            <a class="flex-nav" href="/setting">
+                <span class="material-symbols-outlined navIcon">settings</span>
+                <span class="nav-w">Setting</span>
+            </a>
+        </div>
+        <div id="account">
+            <span class="material-symbols-outlined">account_circle</span>
+            <!-- <span class="nav-w">Account</span> -->
+        </div>
+    </nav>
+    <main>
+        <div id="m1">
+            <div id="m1-h">Chat</div>
+            <div id="group">
+                <div class="groups">
+                    <img src="img/hoppersp.png" alt="">
+                    <span>Hoppers Marylebone FOH</span>
+                </div>
+                <div class="groups">
+                    <img src="img/topgunsp.jpg" alt="">
+                    <span>Top Guns</span>
+                </div>
+                <div class="groups">
+                    <img src="img/inventoryp.jpg" alt="">
+                    <span>Inventory</span>
+                </div>
+                <div class="groups">
+                    <img src="img/weekp.jpeg" alt="">
+                    <span>Week Aims</span>
+                </div>
+                <div class="groups">
+                    <img src="img/rotap.png" alt="">
+                    <span>Rota</span>
+                </div>
+            </div>
+        </div>
+        <div id="m2">
+            <div id="m2-h">
+                <img id="groupimage" src="https://th.bing.com/th/id/R.c5260429416895c4a9a3f74cb342cfe8?rik=xGlqUdQ0YKfBRg&pid=ImgRaw&r=0" alt="">
+                <span id="groupname">Hoppers Marylebone FOH</span>
+            </div>
+            <div id="m2-messageDiv">
+                <div id="m2-messages">
+                    {{!-- <div class="message-i">YESTERDAY</div>
+                    <div class="message">
+                        <span class="mh">Jude</span>
+                        <p>Hello Sujaanth, How far are you. You were starting at 1 pm today</p>
+                    </div>
+                    <div class="message">
+                        <span class="mh">Leo Noronha</span>
+                        <p>100% on HGEM last audit visit. Great work @Jude and the whole team 💪🏼💪🏼💪🏼💪🏼</p>
+                    </div>
+                    <div class="message-o">
+                        <p>This 100% means a lot and shows a lot of improvement. Great work 👏</p>
+                    </div>
+                    <div class="message-image">
+                        <span class="mh">Jude</span>
+                        <img src="https://www.kolici.com/40x40x30cm-double-corrugated-box-2348-71-B.jpg" alt="">
+                    </div>
+                    <div class="message">
+                        <span class="mh">Karan</span>
+                        <p>Sorry guys ill be few minutes late</p>
+                    </div>
+                    <div class="message">
+                        <span class="mh">Bertina</span>
+                        <p>Okay</p>
+                    </div> --}}
+                </div>
+                <form id="m2-inputDiv" action="#">
+                    <span class="material-symbols-outlined">add</span>
+                    <div id="flex-i-s">
+                        <input type="text" placeholder="Type a message" id="messageValue">
+                    </div>
+                    <span class="material-symbols-outlined">sentiment_satisfied</span>
+                    <span class="material-symbols-outlined">mic</span>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/chat.js"></script>
+</html>

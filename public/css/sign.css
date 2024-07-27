@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+.lato-thin {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .lato-light {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .lato-black {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .lato-thin-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .lato-light-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .lato-regular-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .lato-bold-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .lato-black-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+  
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --MainFamily : "Lato", sans-serif;
+    --allborder: 5px;
+    --primaryColor: red;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+body{
+  height: 100vh;
+  display: flex;
+}
+#main-1{
+  flex: 1;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#main-1 img{
+  width: 10%;
+}
+#main-1 form{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+#main-1 form h4{
+  font-family: var(--MainFamily);
+  font-size: 25px;
+}
+#formtext{
+  font-family: var(--MainFamily);
+  font-size: 14px;
+  opacity: 60%;
+}
+.flex-i-s{
+  display: flex;
+  align-items: center;
+  background-color: #f3f3f3;
+  padding: 7px;
+  border-radius: 10px;
+}
+.flex-i-s span{
+  font-size: 17px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+.flex-i-s input{
+  width: 100%;
+  font-size: 14px;
+  padding: 5px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  margin-left: 6px;
+}
+#main-1 form button{
+  background-color: #0071e3;
+  font-family: var(--MainFamily);
+  padding: 9px 0px;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 5px;
+}
+#main-1 form button:hover{
+  cursor: pointer;
+}
+
+
+
+
+#main-2{
+  flex: 1.8;
+  display: flex;
+  align-items: center;
+  background-color: black;
+}
+#main-2 video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+.lato-thin {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .lato-light {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .lato-black {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .lato-thin-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .lato-light-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .lato-regular-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .lato-bold-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .lato-black-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+  
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --MainFamily : "Lato", sans-serif;
+    --allborder: 5px;
+    --primaryColor: red;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+body{
+    height: 100vh;
+    display: flex;
+}
+nav{
+    height: 100%;
+    width: 4%;
+    background-color: #f7f8f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#navI{
+    width: 100%;
+    padding: 10px;
+    height: 10%;
+}
+#navI img{
+    height: 100%;
+    width: 100%;
+}
+#flex-nav-bar{
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 17px; */
+}
+.flex-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+.flex-nav:hover{
+    cursor: pointer;
+    /* background-color: #0071e3; */
+    background-color: #ffffff;
+}
+.flex-nav:hover> span{
+    color: #0071e3;
+}
+#social{
+    border-left: 2px solid #0071e3;
+    color: blue;
+    background-color: white;
+}
+.navIcon{
+    opacity: 70%;
+}
+.nav-w{
+    opacity: 80%;
+    font-family: var(--MainFamily);
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+#account{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+#account span{
+    font-size: 28px;
+    opacity: 70%;
+}
+#account:hover{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+main{
+    height: 100%;
+    width: 96%;
+    display: flex;
+}
+#m1{
+    width: 20%;
+    height: 100%;
+    box-shadow: -1px -1px 3px #0000002d;
+    background-color: #f9f9f9;
+}
+#m1-h{
+    font-family: var(--MainFamily);
+    font-size: 21px;
+    font-weight: 600;
+    width: 100%;
+    height: 10%;
+    border-bottom: 0.5px solid #0000002d;
+    opacity: 80%;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+#group{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+    padding: 10px 20px;
+}
+.groups{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    height: 10%;
+    padding: 5px 7px;
+    border-radius: 7px;
+}
+.groups:hover{
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.groups img{
+    border-radius: 50%;
+    height: 70%;
+}
+.groups span{
+    font-family: var(--MainFamily);
+    font-size: 15px;
+}
+
+#m2{
+    width: 80%;
+    height: 100%;
+    box-shadow: -1px -1px 5px #00000022;
+}
+#m2-h{
+    height: 10%;
+    border-bottom: 0.5px solid #0000002d;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    gap: 15px;
+}
+#m2-h img{
+    height: 90%;
+    border-radius: 50%;
+}
+#m2-h span{
+    font-family: var(--MainFamily);
+    font-size: 19px;
+    font-weight: 600;
+}
+
+
+#m2-messageDiv{
+    height: 90%;
+}
+#m2-messages{
+    padding: 20px 30px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+    overflow-y: auto;
+}
+.message-i{
+    font-family: var(--MainFamily);
+    font-size: 12px;
+    background-color: #f9f9f9;
+    padding: 3px 8px;
+    font-weight: 600;
+    border-radius: 5px;
+    margin: 0px auto;
+}
+.message{
+    background-color: #f9f9f9c5;
+    padding: 8px 8px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    margin-top: 3px;
+}
+.mh{
+    font-family: var(--MainFamily);
+    font-size: 14px;
+    font-weight: 600;
+}
+.message p{
+    font-family: var(--MainFamily);
+    font-size: 14px;
+}
+.message-o{
+    background-color: #f9f9f9c5;
+    margin-top: -8px;
+    font-family: var(--MainFamily);
+    font-size: 14px;
+    padding: 8px 8px;
+}
+.message-image{
+    background-color: #f9f9f9c5;
+    padding: 8px 8px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    margin-top: 3px;
+    max-width: 500px;
+    max-height: 60%;
+    min-width: max-content;
+    min-height: max-content;
+}
+.message-image img{
+    max-width: 100%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+
+
+
+#m2-inputDiv{
+    background-color: #f7f8f7;
+    display: flex;
+    align-items: center;
+    height: 10%;
+    padding: 0px 30px;
+    gap: 10px;
+}
+#m2-inputDiv span{
+    background-color: #e4e4e4;;
+    padding: 7px;
+    border-radius: 50%;
+}
+#m2-inputDiv span:hover{
+    cursor: pointer;
+    color: #0071e3;
+}
+/* input  */
+#flex-i-s{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 20px;
+    background-color: white;
+    border-radius: 5px;
+    width: 100%;
+}
+#flex-i-s input{
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    width: 100%;
+}
