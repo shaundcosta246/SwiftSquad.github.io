@@ -280,7 +280,7 @@ main{
     color: green;
 }
 
-@media(max-width: 500px) and (max-height: 1000px) {
+@media(max-width: 1100px) and (max-height: 2500px) {
     body{
         display: block;
         /* flex-direction: column; */
