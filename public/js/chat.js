@@ -1,7 +1,9 @@
-const liveUri = `https://squadspeaks-github-io.onrender.com`;
-const localUri = `http://localhost:8000`;
-
 const socket = io();
+
+const liveUri = `https://squadspeaks-github-io.onrender.com`;
+// const liveUri = `http://localhost:8000`;
+
+
 let un = JSON.parse(localStorage.getItem("userInfo"));
 console.log(un);
 

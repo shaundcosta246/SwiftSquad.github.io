@@ -1,5 +1,5 @@
 const liveUri = `https://squadspeaks-github-io.onrender.com`;
-const localUri = `http://localhost:8000`;
+// const liveUri = `http://localhost:8000`;
 
 // User Info 
 let filename = document.getElementById("filename");

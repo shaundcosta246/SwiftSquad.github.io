@@ -1,7 +1,8 @@
 const liveUri = `https://squadspeaks-github-io.onrender.com`;
-const localUri = `http://localhost:8000`;
+// const liveUri = `http://localhost:8000`;
 
 let createGroupForm = document.getElementById("createGroupForm");
+
 
 let membersPar = document.getElementById("members-par");
 let membersInput = document.getElementById("members");
