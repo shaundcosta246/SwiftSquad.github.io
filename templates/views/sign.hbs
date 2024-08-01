@@ -12,10 +12,14 @@
         <video src="img/login-1.mp4" autoplay loop muted></video>
     </div>
     <div id="main-1">
-        <form action="/createidentity" method="post" id="signForm">
+        <form action="/createidentity" method="post" id="signForm" enctype="multipart/form-data">
             <img src="https://static.vecteezy.com/system/resources/previews/003/026/146/non_2x/yc-logo-monogram-modern-design-template-free-vector.jpg" alt="">
             <h4>Hi there!</h4>
             <span id="formtext">Welcome to yeschef</span>
+            <div class="flex-i-s">
+                <span class="material-symbols-outlined">imagesmode</span>
+                <input type="file" placeholder="name" name="profilePic" accept="image/*">
+            </div>
             <div class="flex-i-s">
                 <span class="material-symbols-outlined">id_card</span>
                 <input type="text" placeholder="name" name="name">

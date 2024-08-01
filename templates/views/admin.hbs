@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Dashboard</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="mains" id="main-1">
+        <form action="/creategroup" method="post" id="createGroupForm" enctype="multipart/form-data">
+            <img src="https://static.vecteezy.com/system/resources/previews/003/026/146/non_2x/yc-logo-monogram-modern-design-template-free-vector.jpg" alt="">
+            <h4>Create Group</h4>
+            <div class="flex-i-s">
+                <span class="material-symbols-outlined">imagesmode</span>
+                <input type="file" placeholder="name" name="GroupPic" accept="image/*">
+            </div>
+            <div class="flex-i-s">
+                <span class="material-symbols-outlined">id_card</span>
+                <input type="text" placeholder="Groupname" name="groupname">
+            </div>
+            <div class="flex-i-s">
+                <span class="material-symbols-outlined">alternate_email</span>
+                <input type="text" placeholder="Group Description" name="description">
+            </div>
+
+            {{!-- admin  --}}
+            <div id="admins-par">
+            </div>
+            <div class="flex-i-s">
+                <span class="material-symbols-outlined">shield_person</span>
+                <input type="text" placeholder="Admin" name="admin" id="allInputadmin">
+                <span class="material-symbols-outlined" id="downarrowadmin">arrow_drop_up</span>
+            </div>
+            <ul id="adminlist"></ul>
+
+
+            <input type="text" id="members" name="members" style="display: none;">
+            <input type="text" id="admins" name="admins" style="display: none;">
+            <div id="members-par">
+            </div>
+            <div class="flex-i-s">
+                <input type="text" value="all" id="allInput" name="allInput">
+                <span class="material-symbols-outlined" id="downarrow">arrow_drop_up</span>
+            </div>
+            <ul id="peoplelist"></ul>
+            <button type="submit">Create Group</button>
+        </form>
+    </div>
+    <div class="mains"></div>
+    <div class="mains"></div>
+</body>
+<script src="js/admin.js"></script>
+</html>

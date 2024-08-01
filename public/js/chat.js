@@ -1,8 +1,67 @@
+const liveUri = `https://squadspeaks-github-io.onrender.com`;
+const localUri = `http://localhost:8000`;
+
 const socket = io();
 let un = JSON.parse(localStorage.getItem("userInfo"));
+console.log(un);
+
+let checkForname = (groups, username) => {
+    for (let member of groups.members) {
+        if (member.name === username) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 let username = un.name;
 let roomname = "Hoppers Marylebone FOH";
+let loadPage = async() => {
+    try{
+        let group = document.getElementById("group");
+        group.innerHTML = ``;
+        const userUri = `${liveUri}/getGroup`;
+        let data = await fetch(userUri);
+        const response = await data.json();
+        response.forEach((eac) => {
+            if(checkForname(eac, username)){
+                let createdElement = document.createElement("div");
+                createdElement.classList.add("groups");
+                createdElement.innerHTML = `
+                    <img src="GroupImages/${eac.profilePic}" alt="">
+                    <span>${eac.groupname}</span>
+                `;
+                group.appendChild(createdElement);
+                console.log("One document created")
+            }else{
+                console.log("Sorry document could not be created")
+            }
+        });
+        const senderButton = document.getElementsByClassName("groups");
+        const senderButtonArray = Array.from(senderButton);
+        let unclickeveryelement = () => {
+            senderButtonArray.forEach((e) => {
+                e.style.background = "transparent"
+            })
+        }
+        senderButtonArray.forEach((eac) => {
+            eac.addEventListener("click", async(e) => {
+                unclickeveryelement();
+                eac.style.background = "white";
+                const ParentDiv = e.target.parentElement;
+                const firstChild = ParentDiv.children[0];
+                const secondChild = ParentDiv.children[1];
+                changeGroupNav(firstChild, secondChild);
+                roomname = secondChild.innerText;
+                socket.emit("userloaded", ({name: username, room: roomname}))
+            })
+        });
+    }catch(error){
+        console.log(error)
+    }
+}
+loadPage();
 
 
 socket.emit("userloaded", ({name: username, room: roomname}));
@@ -19,27 +78,9 @@ let changeGroupNav = (groupimage, groupname) => {
 }
 
 
-const senderButton = document.getElementsByClassName("groups");
-const senderButtonArray = Array.from(senderButton);
 
-let unclickeveryelement = () => {
-    senderButtonArray.forEach((e) => {
-        e.style.background = "transparent"
-    })
-}
 
-senderButtonArray.forEach((eac) => {
-    eac.addEventListener("click", async(e) => {
-        unclickeveryelement();
-        eac.style.background = "white";
-        const ParentDiv = e.target.parentElement;
-        const firstChild = ParentDiv.children[0];
-        const secondChild = ParentDiv.children[1];
-        changeGroupNav(firstChild, secondChild);
-        roomname = secondChild.innerText;
-        socket.emit("userloaded", ({name: username, room: roomname}))
-    })
-})
+
 
 // send data 
 const chatform = document.getElementById("m2-inputDiv");

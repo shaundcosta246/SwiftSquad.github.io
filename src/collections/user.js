@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    img: {
+    filename: {
         type: String,
-        len: 100
+        required: true
+    },
+    filepath: {
+        type: String,
+        required: true
     },
     name: {
         type: String,

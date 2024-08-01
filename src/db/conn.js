@@ -5,7 +5,7 @@ mongoose.connect(conUri, {
     useNewUrlParser: true,
 })
 .then(() => {
-    console.log(console.log("database connected"));
+    console.log("database connected");
 }).catch((error) => {
     console.log(error)
 })

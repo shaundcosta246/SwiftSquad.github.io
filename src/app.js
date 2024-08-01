@@ -8,13 +8,25 @@ const http = require("http");
 const socketio = require("socket.io");
 const server = http.createServer(app);
 const io = require('socket.io')(server);
-// const io = socketio(server);
 const cors = require("cors");
-// const exphbs = require("express-handlebars");
+
+const multer = require("multer");
+const storage = multer.diskStorage({
+    destination:(req,file,cb) => {
+        cb(null, "public/uploads/")
+    },
+    filename:(req,file,cb) => {
+        cb(null, Date.now() + file.originalname)
+    }
+})
+
+const upload = multer({storage: storage});
 
 // database 
 require("./db/conn")
-const user = require("./collections/user")
+const user = require("./collections/user");
+let group = require("./collections/groups");
+
 
 // path 
 const staticPath = path.join(__dirname, "../public")
@@ -39,10 +51,8 @@ app.use(cors({
 io.on("connection", (socket) => {
     socket.on("userloaded", async({name, room}) => {
         socket.join(room);
-        console.log(name + "User connected to " + room);
     });
     socket.on("message", async({message, room}) => {
-        console.log("Message is from "+ room +" " +message)
         io.to(room).emit("receiveMessage", ({message, room}));
     });
 })
@@ -63,20 +73,22 @@ app.get("/week", (req, res) => {
 app.get("/sign", (req, res) => {
     res.render("sign")
 })
+app.get("/admin", (req, res) => {
+    res.render("admin")
+})
 
 
 
 
 // POST 
-app.post("/createidentity", async(req, res) => {
+app.post("/createidentity", upload.single("profilePic"), async(req, res) => {
     try{
-        const img = `img/${req.body.name}`
-        const name = req.body.name
-        const email = req.body.email
-        const password = req.body.password
-        const position = req.body.position;
+        const {name, email, password, position} = req.body;
+        const filename = req.file.filename; 
+        const filepath = req.file.path; 
         const savedData = new user({
-            img: img,
+            filename: filename,
+            filepath: filepath,
             name: name,
             email: email,
             password: password,
@@ -85,7 +97,7 @@ app.post("/createidentity", async(req, res) => {
         await savedData.save();
         res.status(201).render("login")
     }catch(error){
-        console.log(error)
+        console.log(error.message)
     }
 })
 app.post("/getidentity", async(req, res) => {
@@ -99,12 +111,78 @@ app.post("/getidentity", async(req, res) => {
             res.send("Sorry password not matching")
         }
     }catch(error){
-        console.log(error)
+        res.send(error)
+    }
+})
+
+
+const storageGroupImage = multer.diskStorage({
+    destination:(req,file,cb) => {
+        cb(null, "public/GroupImages")
+    },
+    filename:(req,file,cb) => {
+        cb(null, Date.now() + file.originalname)
+    }
+});
+const storeGroupImage = multer({storage: storageGroupImage});
+
+app.post("/creategroup", storeGroupImage.single("GroupPic"), async(req, res) => {
+    try{
+        const {groupname, description, admin, members, allInput, admins} = req.body;
+        const profilePicname = req.file.filename;
+        let arraymember = JSON.parse(members)
+        let storeArray = []
+        arraymember.forEach((eac) => {
+            let object = {
+                name: eac,
+                groupPos: "none",
+            }
+            storeArray.push(object)
+        });
+
+        let arraymemberAdmin = JSON.parse(admins)
+        arraymemberAdmin.forEach((eac) => {
+            let object = {
+                name: eac,
+                groupPos: "admin",
+            }
+            storeArray.push(object)
+        });
+        const savedGroupInfo = new group({
+            profilePic: profilePicname,
+            groupname: groupname,
+            description: description,
+            members: storeArray,
+            createdAt: Date.now()
+        });
+        await savedGroupInfo.save();
+        res.send("sucessfully created group")
+    }catch(error){
+        res.send("Sorry group could not be created")
     }
 })
 
 
 
+
+
+// API 
+app.get("/getallusers", async(req, res) => {
+    try{
+        const data = await user.find();
+        res.send(data);
+    }catch(error){
+        res.send("sorry api issue we could not fetch data for u..")
+    }
+})
+app.get("/getGroup", async(req, res) => {
+    try{
+        const data = await group.find();
+        res.send(data);
+    }catch(error){
+        res.send("sorry api issue we could not fetch group data for u..")
+    }
+})
 
 
 server.listen(port, () => {
