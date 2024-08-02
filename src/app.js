@@ -170,7 +170,7 @@ app.post("/creategroup", storeGroupImage.single("GroupPic"), async(req, res) => 
 app.get("/getallusers", async(req, res) => {
     try{
         const data = await user.find();
-        res.send(data);
+        res.status(201).send(data);
     }catch(error){
         res.send("sorry api issue we could not fetch data for u..")
     }
@@ -178,7 +178,7 @@ app.get("/getallusers", async(req, res) => {
 app.get("/getGroup", async(req, res) => {
     try{
         const data = await group.find();
-        res.send(data);
+        res.status(201).send(data);
     }catch(error){
         res.send("sorry api issue we could not fetch group data for u..")
     }

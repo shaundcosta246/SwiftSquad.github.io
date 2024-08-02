@@ -38,28 +38,32 @@ let clickedBtn = () => {
 }
 
 social.addEventListener("click", async(e) => {
-    parentDiv.innerHTML = ``;
-    clickedBtn()
-    social.style.background = "#0071e3";
-    social.style.color = "white";
-    const userUri = `${liveUri}/getallusers`;
-    let data = await fetch(userUri);
-    const response = await data.json();
-    response.forEach((each) => {
-        let createdElement =  document.createElement("div");
-        createdElement.classList.add("m-2-items");
-        createdElement.innerHTML = `
-            <div class="m2-1">
-                <img src="uploads/${each.filename}" alt="">
-            </div>
-            <div class="m2-2">
-                <span class="m2-s-1">${each.name}</span>
-                <span class="m2-s-2">${each.position}</span>
-                <span class="m2-s-3">Active</span>
-            </div>
-        `;
-        parentDiv.appendChild(createdElement);
-    })
+    try{
+        parentDiv.innerHTML = ``;
+        clickedBtn()
+        social.style.background = "#0071e3";
+        social.style.color = "white";
+        const userUri = `${liveUri}/getallusers`;
+        let data = await fetch(userUri);
+        const response = await data.json();
+        response.forEach((each) => {
+            let createdElement =  document.createElement("div");
+            createdElement.classList.add("m-2-items");
+            createdElement.innerHTML = `
+                <div class="m2-1">
+                    <img src="uploads/${each.filename}" alt="">
+                </div>
+                <div class="m2-2">
+                    <span class="m2-s-1">${each.name}</span>
+                    <span class="m2-s-2">${each.position}</span>
+                    <span class="m2-s-3">Active</span>
+                </div>
+            `;
+            parentDiv.appendChild(createdElement);
+        })
+    }catch(error){
+        console.log(error)
+    }
 });
 notification.addEventListener("click", async(e) => {
     parentDiv.innerHTML = ``;
