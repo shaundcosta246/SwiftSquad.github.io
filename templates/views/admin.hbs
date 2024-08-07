@@ -48,7 +48,53 @@
             <button type="submit">Create Group</button>
         </form>
     </div>
-    <div class="mains"></div>
+    <div class="mains">
+        <form action="/updateGroup" method="post" id="updateform">
+            <img src="https://static.vecteezy.com/system/resources/previews/003/026/146/non_2x/yc-logo-monogram-modern-design-template-free-vector.jpg" alt="">
+            <h4>Update Group</h4>
+            <div class="flex-i-s">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" id="updatelistgroup" name="groupname">
+                <span class="material-symbols-outlined" id="updatesearch">arrow_drop_up</span>
+            </div>
+            <ul id="searchGrouplist">
+                {{!-- <li class="updategrouplists">Hoppers Marylebone FOH</li>
+                <li class="updategrouplists">Top Guns</li>
+                <li class="updategrouplists">Rota</li>
+                <li class="updategrouplists">Week Aims</li> --}}
+            </ul>
+
+            {{!-- admin update  --}}
+            <ul id="updatememberadminlistul">
+                {{!-- <li class="updateadmin">Jude</li>
+                <li class="updateadmin">Jeet</li> --}}
+            </ul>
+            <div class="flex-i-s">
+                <span class="material-symbols-outlined">shield_person</span>
+                <input type="text" placeholder="Admin" name="admin" id="updateadminInput">
+                <span class="material-symbols-outlined" id="updatedownarrowadmin">arrow_drop_up</span>
+            </div>
+            <ul id="chooseadminlistul">
+                {{!-- <li class="chooseadminlistli">Jude</li>
+                <li class="chooseadminlistli">Jeet</li> --}}
+            </ul>
+            {{!-- normal memeber update  --}}
+            <ul id="updatenormemberlistul">
+                {{!-- <li class="updatenormal">Jude</li>
+                <li class="updatenormal">Jeet</li> --}}
+            </ul>
+            <div class="flex-i-s">
+                <span class="material-symbols-outlined">shield_person</span>
+                <input type="text" placeholder="members" name="members" id="updatememberInput">
+                <span class="material-symbols-outlined" id="updatedownarrowmember">arrow_drop_up</span>
+            </div>
+            <ul id="choosememberlistul">
+                {{!-- <li class="chooseadminlistli">Majid</li>
+                <li class="chooseadminlistli">Swati</li> --}}
+            </ul>
+            <button type="submit">Update Group</button>
+        </form>
+    </div>
     <div class="mains"></div>
 </body>
 <script src="js/admin.js"></script>

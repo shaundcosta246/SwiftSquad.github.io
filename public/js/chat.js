@@ -4,8 +4,19 @@ const liveUri = `https://squadspeaks-github-io.onrender.com`;
 // const liveUri = `http://localhost:8000`;
 
 
+
+let displayuserimage = () => {
+    let par = JSON.parse(localStorage.getItem("userInfo"));
+    let accountImage = document.getElementById("accountImage");
+    accountImage.src = `uploads/${par.filename}`;
+}
+displayuserimage();
+
+
+const messageDiv = document.getElementById("m2-messages");
+
 let un = JSON.parse(localStorage.getItem("userInfo"));
-console.log(un);
+
 
 let checkForname = (groups, username) => {
     for (let member of groups.members) {
@@ -16,6 +27,30 @@ let checkForname = (groups, username) => {
     return false;
 }
 
+let MessageDiv = document.getElementById("m2-messages");
+let loadMessages = (data) => {
+    MessageDiv.innerHTML = "";
+    data.forEach((each) => {
+        let timestamp = each.createdAt;
+        const date = new Date(Number(timestamp));
+        let hours = date.getHours();
+        const minutes = date.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; 
+        const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+        const formattedTime = `${hours}:${formattedMinutes} ${ampm}`;
+
+        const createdElementl = document.createElement("div");
+        createdElementl.classList.add("message");
+        createdElementl.innerHTML = `
+            <span class="mh">${each.messageSender}</span>
+            <p class="messageP">${each.message}</p>
+            <span class="messageTime">${formattedTime}</span>
+        `;
+        MessageDiv.appendChild(createdElementl)
+    })
+}
 
 let username = un.name;
 let roomname = "Hoppers Marylebone FOH";
@@ -28,6 +63,7 @@ let loadPage = async() => {
         const response = await data.json();
         response.forEach((eac) => {
             if(checkForname(eac, username)){
+                console.log("Searching for "+ username)
                 let createdElement = document.createElement("div");
                 createdElement.classList.add("groups");
                 createdElement.innerHTML = `
@@ -37,7 +73,7 @@ let loadPage = async() => {
                 group.appendChild(createdElement);
                 console.log("One document created")
             }else{
-                console.log("Sorry document could not be created")
+                console.log(username+ " not in the group")
             }
         });
         const senderButton = document.getElementsByClassName("groups");
@@ -54,9 +90,19 @@ let loadPage = async() => {
                 const ParentDiv = e.target.parentElement;
                 const firstChild = ParentDiv.children[0];
                 const secondChild = ParentDiv.children[1];
-                changeGroupNav(firstChild, secondChild);
+                let userUrid = `${liveUri}/getGroup?groupname=${secondChild.innerText}`;
+                let datad = await fetch(userUrid);
+                let responsed = await datad.json();
+                changeGroupNav(firstChild, secondChild, responsed[0].description);
                 roomname = secondChild.innerText;
                 socket.emit("userloaded", ({name: username, room: roomname}))
+                // load messages 
+                const userUri = `${liveUri}/getGroupmessages?Groupname=${secondChild.innerText}`;
+                let data = await fetch(userUri);
+                const response = await data.json();
+                const messageDiv = document.getElementById("m2-messages");
+                loadMessages(response);
+                messageDiv.scrollTop = messageDiv.scrollHeight;
             })
         });
     }catch(error){
@@ -64,16 +110,18 @@ let loadPage = async() => {
     }
 }
 loadPage();
-
+messageDiv.scrollTop = messageDiv.scrollHeight;
 
 socket.emit("userloaded", ({name: username, room: roomname}));
 
 let groupimaged = document.getElementById("groupimage");
 let groupnamed = document.getElementById("groupname");
-let changeGroupNav = (groupimage, groupname) => {
+let groupdescription = document.getElementById("groupdescription");
+let changeGroupNav = (groupimage, groupname, description) => {
     try{
         groupimaged.src = groupimage.src;
         groupnamed.innerText = groupname.innerText;
+        groupdescription.innerText = description;
     }catch(error){
         console.log(error + "This is error")
     }
@@ -84,9 +132,18 @@ let changeGroupNav = (groupimage, groupname) => {
 
 
 
+
 // send data 
 const chatform = document.getElementById("m2-inputDiv");
 const messageValue = document.getElementById("messageValue");
+
+messageValue.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        chatform.dispatchEvent(new Event('submit'));
+    }
+});
+
 chatform.addEventListener("submit", (e) => {
     e.preventDefault();
     let message = messageValue.value;
@@ -94,9 +151,7 @@ chatform.addEventListener("submit", (e) => {
     if(message === ""){
         alert("Please type something");
     }else{
-        console.log(`My room is ${room}
-            and my message is ${message}`);
-        socket.emit("message", ({message, room}));
+        socket.emit("message", ({message, room, usernamesent: username}));
         e.target.elements.messageValue.value = "";
 		e.target.elements.messageValue.focus();
     }
@@ -114,13 +169,13 @@ const appendMessage = (message, username) => {
 }
 
 // receive data 
-const messageDiv = document.getElementById("m2-messages");
 messageDiv.scrollTop = messageDiv.scrollHeight;
-socket.on("receiveMessage", ({message, room}) => {
+socket.on("receiveMessage", ({message, room, usernamesent}) => {
     if(roomname === room){
-        appendMessage(message, username)
+        appendMessage(message, usernamesent)
         messageDiv.scrollTop = messageDiv.scrollHeight;
     }else{
         console.log("This is not our message")
     }
 })
+

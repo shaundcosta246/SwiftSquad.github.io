@@ -22,6 +22,13 @@ if(userInfo.name === ""){
 }
 const par = JSON.parse(localStorage.getItem("userInfo"));
 
+let displayuserimage = () => {
+    let par = JSON.parse(localStorage.getItem("userInfo"));
+    let accountImage = document.getElementById("accountImage");
+    accountImage.src = `uploads/${par.filename}`;
+}
+displayuserimage();
+
 let parentDiv = document.getElementById("m-2")
 let notification = document.getElementById("notification")
 let social = document.getElementById("soc")

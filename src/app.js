@@ -25,8 +25,8 @@ const upload = multer({storage: storage});
 // database 
 require("./db/conn")
 const user = require("./collections/user");
-let group = require("./collections/groups");
-
+const group = require("./collections/groups");
+const groupmessage = require("./collections/groupmessage");
 
 // path 
 const staticPath = path.join(__dirname, "../public")
@@ -52,8 +52,20 @@ io.on("connection", (socket) => {
     socket.on("userloaded", async({name, room}) => {
         socket.join(room);
     });
-    socket.on("message", async({message, room}) => {
-        io.to(room).emit("receiveMessage", ({message, room}));
+    socket.on("message", async({message, room, usernamesent}) => {
+        try{
+            let savedGroupmessage = new groupmessage({
+                messageSender: usernamesent,
+                Groupname: room,
+                message: message,
+                messageType: "text",
+                createdAt: Date.now()
+            })
+            await savedGroupmessage.save();
+            io.to(room).emit("receiveMessage", ({message, room, usernamesent}));
+        }catch(error){
+            console.log(error)
+        }
     });
 })
 
@@ -162,6 +174,32 @@ app.post("/creategroup", storeGroupImage.single("GroupPic"), async(req, res) => 
     }
 })
 
+app.post("/updateGroup", async(req, res) => {
+    const {groupname, members} = req.body;
+    try{
+        let updateGroup = await group.findOneAndUpdate(
+            {"groupname": groupname},
+            {
+                $set: {
+                    "members": []
+                }
+            },
+            { new: true }
+        );
+        updateGroup = await group.findOneAndUpdate(
+            {"groupname": groupname},
+            {
+                $set: {
+                    "members": JSON.parse(members)
+                }
+            },
+            { new: true }
+        )
+        res.send("sucessfully updated group")
+    }catch(error){
+        res.send(error)
+    }
+})
 
 
 
@@ -177,13 +215,20 @@ app.get("/getallusers", async(req, res) => {
 })
 app.get("/getGroup", async(req, res) => {
     try{
-        const data = await group.find();
+        const data = await group.find(req.query);
         res.status(201).send(data);
     }catch(error){
         res.send("sorry api issue we could not fetch group data for u..")
     }
 })
-
+app.get("/getGroupmessages", async(req, res) => {
+    try{
+        const data = await groupmessage.find(req.query);
+        res.status(201).send(data);
+    }catch(error){
+        res.send("sorry api issue we could not fetch group message data for u..")
+    }
+})
 
 server.listen(port, () => {
     console.log(`Listining to the port no ${port}`)

@@ -89,17 +89,17 @@ body{
     flex: 1;
     border: 1px solid black;
     padding: 20px;
+    overflow: hidden;
 }
-#main-1 img{
+form img{
     width: 10%;
 }
-#main-1 form{
+form{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 20px;
 }
-#main-1 form h4{
+form h4{
   font-family: var(--MainFamily);
   font-size: 25px;
 }
@@ -150,12 +150,12 @@ body{
 }
 #admins-par{
   display: flex;
-  flex-wrap: wrap;
+  overflow-x: auto;
   gap: 10px;
 }
 #members-par{
   display: flex;
-  flex-wrap: wrap;
+  overflow-x: auto;
   gap: 10px;
 }
 .memberspan{
@@ -195,4 +195,100 @@ body{
 }
 .peoplelistli:hover{
   cursor: pointer;
+}
+
+
+
+
+/* update form  */
+#updateform{
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+#updatesearch:hover{
+  cursor: pointer;
+}
+#searchGrouplist{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.updategrouplists{
+  background-color: #f3f3f3;
+  font-family: var(--MainFamily);
+  border-radius: 5px;
+  padding: 9px 10px;
+  font-size: 14px;
+}
+#searchGrouplist li:hover{
+  cursor: pointer;
+}
+
+
+#updatememberadminlistul{
+  font-family: var(--MainFamily);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  gap: 5px;
+  margin-top: 5px;
+}
+.updateadmin{
+  background-color: black;
+  color: #f3f3f3;
+  padding: 5px 8px;
+  border-radius: 40px;
+  font-size: 13px;
+}
+
+#chooseadminlistul{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 25vh;
+  overflow-y: auto;
+}
+.chooseadminlistli{
+  background-color: black;
+  color: white;
+  opacity: 60%;
+  padding: 7px 10px;
+  font-family: var(--MainFamily);
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: var(--allborder);
+}
+
+#updatenormemberlistul{
+  font-family: var(--MainFamily);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  gap: 5px;
+  margin-top: 5px;
+}
+#choosememberlistul{
+  font-family: var(--MainFamily);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  overflow-x: auto;
+  gap: 5px;
+  margin-top: 5px;
+  height: 25vh;
+}
+
+#updateform button{
+  background-color: #0071e3;
+  font-family: var(--MainFamily);
+  padding: 9px 0px;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 5px;
 }

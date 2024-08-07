@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+.lato-thin {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .lato-light {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .lato-black {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .lato-thin-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .lato-light-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .lato-regular-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .lato-bold-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .lato-black-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+  
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --MainFamily : "Lato", sans-serif;
+    --allborder: 5px;
+    --primaryColor: red;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+body{
+    height: 100vh;
+    display: flex;
+}
+
+nav{
+    height: 100%;
+    width: 4%;
+    background-color: #f7f8f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#navI{
+    width: 100%;
+    padding: 10px;
+    height: 10%;
+}
+#navI img{
+    height: 100%;
+    width: 100%;
+}
+#flex-nav-bar{
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 17px; */
+}
+.flex-nav{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+.flex-nav:hover{
+    cursor: pointer;
+    /* background-color: #0071e3; */
+    background-color: #ffffff;
+}
+.flex-nav:hover> span{
+    color: #0071e3;
+}
+#social{
+    border-left: 2px solid #0071e3;
+    color: blue;
+    background-color: white;
+}
+.navIcon{
+    opacity: 70%;
+}
+.nav-w{
+    opacity: 80%;
+    font-family: var(--MainFamily);
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+#account{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    /* width: 100%; */
+    padding: 10px;
+}
+#accountImage{
+  width: 100%;
+  border-radius: 50%;
+}
+#account:hover{
+    cursor: pointer;
+}
+
+
+main{
+    height: 100%;
+    width: 96%;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+#myrota{
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+.waffle{
+  width: inherit;
+}

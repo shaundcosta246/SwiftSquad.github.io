@@ -147,9 +147,9 @@ nav{
     /* width: 100%; */
     padding: 10px;
 }
-#account span{
-    font-size: 28px;
-    opacity: 70%;
+#accountImage{
+    width: 100%;
+    border-radius: 50%;
 }
 #account:hover{
     cursor: pointer;
