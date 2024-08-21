@@ -9,6 +9,7 @@ const socketio = require("socket.io");
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 const cors = require("cors");
+const fs = require("fs");
 
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -27,6 +28,7 @@ require("./db/conn")
 const user = require("./collections/user");
 const group = require("./collections/groups");
 const groupmessage = require("./collections/groupmessage");
+const post = require("./collections/post");
 
 // path 
 const staticPath = path.join(__dirname, "../public")
@@ -52,21 +54,78 @@ io.on("connection", (socket) => {
     socket.on("userloaded", async({name, room}) => {
         socket.join(room);
     });
-    socket.on("message", async({message, room, usernamesent}) => {
+    socket.on("message", async({messageText, room, usernamesent, messageFile, filename, fileType}) => {
         try{
-            let savedGroupmessage = new groupmessage({
-                messageSender: usernamesent,
-                Groupname: room,
-                message: message,
-                messageType: "text",
-                createdAt: Date.now()
-            })
-            await savedGroupmessage.save();
-            io.to(room).emit("receiveMessage", ({message, room, usernamesent}));
+            if(messageFile){
+                // Ensure the file name is safe and within a reasonable length
+                const maxFileNameLength = 100;
+                let safeFileName = filename.length > maxFileNameLength ? filename.slice(0, maxFileNameLength) : filename;
+                safeFileName = safeFileName.replace(/[^a-zA-Z0-9.]/g, '_'); // Replace any invalid characters
+
+                const base64Data = messageFile.split(',')[1];
+                // Create a buffer from the base64 data
+                const buffer = Buffer.from(base64Data, 'base64');
+                const savePath = path.join(__dirname, '../public/messagesFile', safeFileName);
+                // Ensure the 'uploads' directory exists, if not, create it
+                if (!fs.existsSync(path.join(__dirname, '../public/messagesFile'))) {
+                    fs.mkdirSync(path.join(__dirname, '../public/messagesFile'), { recursive: true });
+                }
+                fs.writeFile(savePath, buffer, (err) => {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        console.log("File saved successfully:", filename);
+                    }
+                });
+                let savedGroupmessage = new groupmessage({
+                    messageSender: usernamesent,
+                    Groupname: room,
+                    message: messageText,
+                    messageType: "file",
+                    filename: filename,
+                    fileType: fileType,
+                    createdAt: Date.now()
+                })
+                await savedGroupmessage.save();
+                io.to(room).emit("receiveMessage", ({messageText, room, usernamesent, fileType, filename}));
+            }else{
+                let savedGroupmessage = new groupmessage({
+                    messageSender: usernamesent,
+                    Groupname: room,
+                    message: messageText,
+                    messageType: "text",
+                    createdAt: Date.now()
+                })
+                await savedGroupmessage.save();
+                io.to(room).emit("receiveMessage", ({messageText, room, usernamesent, filename}));
+            }
         }catch(error){
             console.log(error)
         }
     });
+    socket.on("deletedMessage", async(data) => {
+        try{
+            let groupmessageDelete = await groupmessage.findOneAndUpdate(
+                {_id: data.messageId},
+                {
+                    $set:  {
+                        "message": data.text,
+                        "filename": "",
+                        "fileType": "",
+                        "messageType": "text"
+                    }
+                },
+                { new: true }
+            )
+            if (groupmessageDelete) {
+                console.log("Document deleted:");
+            } else {
+                console.log('No document matches the provided criteria.');
+            }
+        }catch(error){
+            console.log(error)
+        }
+    })
 })
 
 
@@ -201,13 +260,39 @@ app.post("/updateGroup", async(req, res) => {
     }
 })
 
+const storagePost = multer.diskStorage({
+    destination:(req,file,cb) => {
+        cb(null, "public/posts")
+    },
+    filename:(req,file,cb) => {
+        cb(null, Date.now() + file.originalname)
+    }
+});
+const storePost = multer({storage: storagePost});
+app.post("/newPost", storePost.single("fileInput"), async(req, res) => {
+    let postvi = req.file ? req.file.filename : null;
+    let savedData = new post({
+        filename: postvi,
+        user: req.body.user,
+        description: req.body.descriptionInput,
+        likes: "null",
+        comments: "null"
+    });
+    await savedData.save();
+    res.send("sucessfully posted")
+})
+
+
+
+
+
 
 
 
 // API 
 app.get("/getallusers", async(req, res) => {
     try{
-        const data = await user.find();
+        const data = await user.find(req.query);
         res.status(201).send(data);
     }catch(error){
         res.send("sorry api issue we could not fetch data for u..")
@@ -224,6 +309,14 @@ app.get("/getGroup", async(req, res) => {
 app.get("/getGroupmessages", async(req, res) => {
     try{
         const data = await groupmessage.find(req.query);
+        res.status(201).send(data);
+    }catch(error){
+        res.send("sorry api issue we could not fetch group message data for u..")
+    }
+})
+app.get("/getallpost", async(req, res) => {
+    try{
+        const data = await post.find(req.query);
         res.status(201).send(data);
     }catch(error){
         res.send("sorry api issue we could not fetch group message data for u..")

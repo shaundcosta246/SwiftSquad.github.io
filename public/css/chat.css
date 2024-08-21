@@ -235,6 +235,7 @@ main{
     align-items: center;
     padding: 10px 30px;
     gap: 15px;
+    position: relative;
 }
 #m2-h img{
     height: 90%;
@@ -255,10 +256,107 @@ main{
     font-family: var(--MainFamily);
     opacity: 60%;
 }
+#groupInfo{
+    margin-left: auto;
+    padding: 5px;
+}
+#groupInfo:hover{
+    cursor: pointer;
+    background-color: #e4e4e4;
+    border-radius: 50%;
+}
+#groupUl{
+    position: absolute;
+    right: 2%;
+    top: 90%;
+    background-color: #f9f9f9;
+    padding: 12px 0px;
+    font-family: var(--MainFamily);
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px #0000002d;
+    z-index: 3;
+}
+#groupUl li{
+    font-size: 14px;
+    width: 100%;
+    padding: 7px 20px;
+}
+#groupUl li:hover{
+    cursor: pointer;
+    background-color: white;
+}
+
+
+
+
+
 
 #m2-messageDiv{
     height: 90%;
+    position: relative;
 }
+
+
+/* flex memebers  */
+#flex-members{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 90%;
+    display: none;
+    /* gap: 20px; */
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    padding: 20px 0px;
+    margin: auto 0px;
+    overflow: auto;
+}
+.gmembers{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 10px;
+}
+.gmembers:hover{
+    background-color: white;
+    cursor: pointer;
+}
+.gm-i{
+    width: 12%;
+    border-radius: 50%;
+}
+.flex-n-p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.gm-n{
+    font-family: var(--MainFamily);
+    font-size: 16px;
+    font-weight: 400;
+}
+.gm-p{
+    font-family: var(--MainFamily);
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 70%;
+}
+.gm-a{
+    margin-left: auto;
+    background-color: #d5fdcd;
+    color: #539966;
+    padding: 3px 7px;
+    font-size: 14px;
+    border-radius: 3px;
+    font-family: var(--MainFamily);
+    font-weight: 300;
+}
+
+
 #m2-messages{
     padding: 20px 30px;
     height: 90%;
@@ -268,6 +366,14 @@ main{
     gap: 13px;
     overflow-y: auto;
 }
+
+
+
+
+
+
+
+
 .message-i{
     font-family: var(--MainFamily);
     font-size: 12px;
@@ -278,6 +384,7 @@ main{
     margin: 0px auto;
 }
 .message{
+    position: relative;
     background-color: #f9f9f9c5;
     padding: 8px 8px;
     border-radius: 5px;
@@ -289,14 +396,73 @@ main{
     min-width: min-content;
     max-width: 50%;
 }
+.messageul{
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    list-style: none;
+    font-family: var(--MainFamily);
+    position: absolute;
+    top: 0;
+    left: 105%;
+    float: left;
+    margin-top: 10px;
+    background-color: #f9f9f9c5;
+    padding: 7px 0px;
+    z-index: 3;
+}
+.messageli{
+    font-size: 12px;
+    color: black;
+    opacity: 70%;
+    padding: 4px 10px;
+    font-size: 13px;
+}
+.messageli:hover{
+    background-color: white;
+    opacity: 100%;
+    cursor: pointer;
+}
+.messagedownarrow{
+    opacity: 40%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    height: 30px;
+}
+.message:hover > .messagedownarrow{
+    cursor: pointer;
+    display: unset;
+}
+.hiddenID{
+    font-family: var(--MainFamily);
+    display: none;
+}
 .mh{
     font-family: var(--MainFamily);
     font-size: 14px;
     font-weight: 600;
 }
+.fileA{
+    background-color: #0071e3;
+    color: white;
+    font-family: var(--MainFamily);
+    text-decoration: none;
+    font-weight: 400;
+    margin-right: 30px;
+    padding: 7px 10px;
+    border-radius: 5px;
+}
+.messageImage{
+    width: 17vw;
+}
 .message p{
     font-family: var(--MainFamily);
     font-size: 14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.3;
 }
 .messageP{
     white-space: pre-wrap;
@@ -356,6 +522,9 @@ main{
 #m2-inputDiv span:hover{
     cursor: pointer;
     color: #0071e3;
+}
+#imageMessage{
+    max-width: min-content;
 }
 /* input  */
 #flex-i-s{

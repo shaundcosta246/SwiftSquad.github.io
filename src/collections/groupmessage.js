@@ -11,13 +11,16 @@ const groupmessageSchema = new mongoose.Schema({
     },
     message: {
         type: String,
-        required: true,
-        len: 30,
-        unique: true
     },
     messageType: {
         type: String,
         default: "text"
+    },
+    filename: {
+        type: String
+    },
+    fileType: {
+        type: String
     },
     createdAt: {
         type: String,

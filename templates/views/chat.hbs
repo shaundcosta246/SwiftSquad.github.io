@@ -44,9 +44,27 @@
                     <span id="groupname"></span>
                     <div id="groupdescription"></div>
                 </div>
+                <span class="material-symbols-outlined" id="groupInfo">more_vert</span>
+                <ul id="groupUl">
+                    <li id="groupMember">Group members</li>
+                    <li id="exitGroup">Exit group</li>
+                </ul>
             </div>
             <div id="m2-messageDiv">
+                {{!-- list of memebers in the group  --}}
+                <div id="flex-members"></div>
                 <div id="m2-messages">
+                    {{!-- <div class="message">
+                        <ul class="messageul">
+                            <li class="messageli messageDelete">Delete</li>
+                            <li class="messageli">Reply</li>
+                        </ul>
+                        <span class="hiddenID"></span>
+                        <span class="mh">Shaun</span>
+                        <img class="messageImage" src="https://pickyglutton.files.wordpress.com/2017/10/prawn-kari-at-hoppers-st-christophers-place.jpg?w=610" alt="">
+                        <p class="messageP">Hi guys</p>
+                        <span class="messageTime">10:40 AM</span>
+                    </div> --}}
                     {{!--<div class="message-i">YESTERDAY</div>
                     <div class="message">
                         <span class="mh">Jude</span>
@@ -73,10 +91,11 @@
                         <p>Okay</p>
                     </div> --}}
                 </div>
-                <form id="m2-inputDiv" action="#">
-                    <span class="material-symbols-outlined">add</span>
+                <form id="m2-inputDiv" method="post" action="/createMessage">
+                    <label for="imageMessage" class="material-symbols-outlined" style="cursor: pointer;">add</label>
+                    <input type="file" name="imageMessage" id="imageMessage" style="display: none;">
                     <div id="flex-i-s">
-                        <textarea type="text" placeholder="Type a message" id="messageValue"></textarea>
+                        <textarea type="text" placeholder="Type a message" id="messageValue" name="messageText"></textarea>
                     </div>
                     <span class="material-symbols-outlined">sentiment_satisfied</span>
                     <span class="material-symbols-outlined">mic</span>
