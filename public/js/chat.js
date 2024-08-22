@@ -124,7 +124,7 @@ MessageDiv.addEventListener("click", async(e) => {
         let messageId = e.target.parentElement.parentElement.querySelector('.hiddenID').innerText;
         let messageName = e.target.parentElement.parentElement.querySelector(".mh").innerText;
         let messageContainer = e.target.parentElement.parentElement.querySelector('.messageP');
-        console.log(messageId, messageContainer, roomname);
+        // console.log(messageId, messageContainer, roomname);
         if(username === messageName){
             socket.emit("deletedMessage", {
                 messageId, 
@@ -136,19 +136,20 @@ MessageDiv.addEventListener("click", async(e) => {
             let datad = await fetch(userUrid);
             let responsed = await datad.json();
             let response = responsed[0];
-            response.members.some((each) => {
-                if (each.name === username && each.groupPos === "admin") {
-                    socket.emit("deletedMessage", {
-                        messageId, 
-                        text: `This message was deleted by admin ${username}`
-                    });
-                    messageContainer.innerText = `This message was deleted by admin ${username}`;
-                    return true; // Stop the loop
-                } else {
-                    alert(`Sorry, this message can't be removed. Please contact the admin.`);
-                    return true; // Stop the loop after the alert
+            let findadmin = (gP, username) => {
+                for(let i = 0;i < gP.length;i++){
+                    if(gP[i].name === username && gP[i].groupPos === "admin"){
+                        // console.log(gP[i]);
+                        socket.emit("deletedMessage", {
+                            messageId, 
+                            text: `This message was deleted by admin ${username}`
+                        });
+                        messageContainer.innerText = `This message was deleted by admin ${username}`;
+                        break
+                    }
                 }
-            });
+            }
+            findadmin(response.members, username);
         }
     }
 });
@@ -352,8 +353,8 @@ groupUl.addEventListener("click", async(e) => {
         let admins = response.members.filter(member => member.groupPos === 'admin');
         let nonAdmins = response.members.filter(member => member.groupPos !== 'admin');
 
-         // Combine both arrays with admins first
-         let orderedMembers = [...admins, ...nonAdmins];
+        // Combine both arrays with admins first
+        let orderedMembers = [...admins, ...nonAdmins];
 
         orderedMembers.forEach(async(each) => {
             const uuri = `${liveUri}/getallusers?name=${each.name}`;
