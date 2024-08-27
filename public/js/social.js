@@ -55,16 +55,17 @@ social.addEventListener("click", async(e) => {
         const response = await data.json();
         response.forEach((each) => {
             let createdElement =  document.createElement("div");
-            createdElement.classList.add("m-2-items");
+            createdElement.classList.add("m2-items");
             createdElement.innerHTML = `
                 <div class="m2-1">
-                    <img src="uploads/${each.filename}" alt="">
+                    <img src="uploads/${each.filename}" class="personImage" alt="Image">
+                    <span class="m2-s1">${each.name}</span>
+                    <div class="pf-i">
+                        <img src="img/OIP.jpeg" class="flagImage" alt="">
+                        <span class="flagInfo">India, Kerala</span>
+                    </div>
                 </div>
-                <div class="m2-2">
-                    <span class="m2-s-1">${each.name}</span>
-                    <span class="m2-s-2">${each.position}</span>
-                    <span class="m2-s-3">Active</span>
-                </div>
+                <div class="m2-2">${each.position}</div>
             `;
             parentDiv.appendChild(createdElement);
         })

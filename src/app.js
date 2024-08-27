@@ -324,5 +324,7 @@ app.get("/getallpost", async(req, res) => {
 })
 
 server.listen(port, () => {
-    console.log(`Listining to the port no ${port}`)
+    console.log(`✅ Listining to the port no ${port}`)
+}).on("error", (error) => {
+    console.log(`❌ Failed to start server ${error}`)
 })
